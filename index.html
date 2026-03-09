@@ -1,2106 +1,600 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Awaiken">
+    <!-- Page Title -->
     <title>CRILOF - Luxury Skin Care</title>
-    
-    <!-- Google Fonts for better typography -->
-    
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #FFF7F0;
-            --bg-2: #34070e;
-            --surface: #ffffff;
-            --text: #ffffff;
-            --muted: rgba(255, 255, 255, 0.72);
-            --border: rgba(255, 255, 255, 0.14);
-            --accent: #c1121f;
-            --accent-2: #fecdd3;
-            --shadow: 0 24px 60px rgba(0, 0, 0, 0.10);
-            --radius: 16px;
-        }
-        /* :root {
-            --bg: #1b0206;
-            --bg-2: #34070e;
-            --surface: #ffffff;
-            --text: #ffffff;
-            --muted: rgba(255, 255, 255, 0.72);
-            --border: rgba(255, 255, 255, 0.14);
-            --accent: #c1121f;
-            --accent-2: #fecdd3;
-            --shadow: 0 24px 60px rgba(0, 0, 0, 0.10);
-            --radius: 16px;
-        } */
-
-        .topbar,
-        .dropdown,
-        .card,
-        .hero-card,
-        .quote,
-        .footer {
-            --text: #0b0b0b;
-            --muted: #7e7e7e;
-        }
-
-        .carousel {
-            --text: #ffffff;
-            --muted: rgba(255, 255, 255, 0.72);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            /* background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg) 60%, #090001 100%); */
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate3d(0, 18px, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-        }
-
-        .page {
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.6" fill="%23c1121f" opacity="0.03"/><circle cx="75" cy="75" r="0.6" fill="%23c1121f" opacity="0.03"/><circle cx="50" cy="10" r="0.4" fill="%23c1121f" opacity="0.02"/><circle cx="20" cy="60" r="0.5" fill="%23c1121f" opacity="0.02"/><circle cx="80" cy="40" r="0.4" fill="%23c1121f" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            pointer-events: none;
-        }
-
-        .container {
-            width: min(1120px, calc(100% - 40px));
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            background: #FFFFFF;
-            border-bottom: 1px solid #F1E7E3;
-        }
-
-        .topbar-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 0;
-            gap: 18px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            text-decoration: none;
-            color: #2F2F2F;
-        }
-
-        .brand-name {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-        }
-
-        .brand-tag {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: #2F2F2F;
-            text-transform: uppercase;
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
-
-        .nav-item {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .dropdown {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 0;
-            min-width: 220px;
-            padding: 10px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: #FFFFFF;
-            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
-            display: none;
-        }
-
-        .dropdown::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: -10px;
-            height: 10px;
-        }
-
-        .dropdown a {
-            width: 100%;
-            padding: 10px 10px;
-            border-radius: 12px;
-        }
-
-        .dropdown a::after {
-            display: none;
-        }
-
-        .nav-item:hover .dropdown {
-            display: block;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #2F2F2F;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            padding: 10px 2px;
-            transition: color 0.25s ease;
-        }
-
-        .nav a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 6px;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.25s ease;
-        }
-
-        #contactUsbtn .nav a::after {
-            background: none !important;
-        }
-
-        .nav a:hover {
-            color: #AB2B2A;
-        }
-
-        .nav a:hover::after {
-            width: 100%;
-        }
-
-        .nav a.active {
-            color: #ffffff;
-        }
-
-        .nav a.active::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 18px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.10);
-            color: #ffffff;
-        }
-
-        .menu-btn {
-            display: none;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.10);
-            border-radius: 12px;
-            padding: 10px 12px;
-            cursor: pointer;
-        }
-
-        .menu-btn span {
-            display: block;
-            width: 18px;
-            height: 2px;
-            background: #ffffff;
-            margin: 4px 0;
-            border-radius: 2px;
-        }
-
-        .hero {
-            position: relative;
-            padding: 84px 0 36px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(120% 120% at 18% 12%, rgba(193, 18, 31, 0.18), rgba(255, 255, 255, 0) 55%),
-                radial-gradient(120% 120% at 86% 20%, rgba(254, 205, 211, 0.35), rgba(255, 255, 255, 0) 55%),
-                linear-gradient(180deg, rgba(193, 18, 31, 0.06), rgba(255, 255, 255, 0));
-            pointer-events: none;
-        }
-
-        .hero-top {
-            margin-bottom: 26px;
-        }
-
-        .hero-top .carousel-slide {
-            padding: 22px;
-        }
-
-        .hero-top .product-visual {
-            min-height: 210px;
-        }
-
-        .hero-top .product-meta h3 {
-            font-size: 1.55rem;
-            color: #2F2F2F !important;
-        }
-
-        .hero-top .product-meta p {
-            font-size: 0.98rem;
-            color: #5A5A5A !important;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 36px;
-            align-items: center;
-        }
-        .hero-grid h1{
-            color: #2F2F2F;
-        }
-        .hero-grid span{
-            color: #8A8A8A;
-        }
-        .hero-grid p{
-            color: #5A5A5A !important;
-        }
-
-        .kicker {
-            display: inline-block;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 14px;
-        }
-
-        .hero h1 {
-            font-family: 'Georgia', serif;
-            font-size: clamp(2.3rem, 4vw, 3.6rem);
-            font-weight: 300;
-            letter-spacing: 2px;
-            line-height: 1.15;
-            margin-bottom: 18px;
-        }
-
-        .hero p {
-            color: var(--muted);
-            line-height: 1.8;
-            font-size: 1.05rem;
-            max-width: 62ch;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 14px;
-            margin-top: 26px;
-            flex-wrap: wrap;
-        }
-
-        .product-cards {
-            margin-top: 26px;
-        }
-
-        .product-image {
-            height: 160px;
-            border-radius: 14px;
-            border: 1px solid rgba(232, 232, 232, 0.9);
-            background: radial-gradient(120% 120% at 30% 20%, rgba(254, 205, 211, 0.42), rgba(255, 255, 255, 0.9));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        .benefits {
-            margin-top: 12px;
-            padding-left: 18px;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .benefits li {
-            margin: 6px 0;
-        }
-
-        .meta-line {
-            margin-top: 12px;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .back-to-top {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            background: #FFFFFF;
-            color: #AB2B2A;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
-            transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 20;
-            backdrop-filter: blur(10px);
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-2px);
-            background: #AB2B2A;
-            color: #ffffff;
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 999px;
-            padding: 14px 20px;
-            text-decoration: none;
-            border: 1px solid transparent;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-        }
-
-        .btn-primary {
-            background: #AB2B2A;
-            color: #FFFFFF;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow:  0 0px 9px #B54742;;
-        }
-
-        .btn-ghost {
-            background: #F6E6E2;
-            border-color: #F6E6E2;
-            color: #AB2B2A;
-        }
-
-        .btn-ghost:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.06);
-        }
-
-        .hero-card {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(232, 232, 232, 0.9);
-            border-radius: var(--radius);
-            padding: 26px;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
-        }
-
-        .hero-card h3 {
-            font-family: 'Georgia', serif;
-            font-weight: 300;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .hero-card p {
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: 0.95rem;
-            margin-bottom: 18px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .stat {
-            background: rgba(250, 250, 250, 0.9);
-            border: 1px solid rgba(232, 232, 232, 0.9);
-            border-radius: 12px;
-            padding: 14px;
-            text-align: center;
-        }
-
-        .stat strong {
-            display: block;
-            font-family: 'Georgia', serif;
-            font-weight: 300;
-            font-size: 1.25rem;
-            letter-spacing: 1px;
-        }
-
-        .stat span {
-            display: block;
-            margin-top: 6px;
-            color: var(--muted);
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .section {
-            padding: 64px 0;
-        }
-
-        .section-head {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 18px;
-            margin-bottom: 28px;
-        }
-
-        .section-title {
-            font-family: 'Georgia', serif;
-            font-weight: 300;
-            font-size: 2rem;
-            letter-spacing: 1px;
-            color: #2F2F2F;
-        }
-
-        .section-subtitle {
-            color:#5A5A5A;
-            max-width: 140ch;
-            line-height: 1.7;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 18px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(232, 232, 232, 0.9);
-            border-radius: var(--radius);
-            padding: 24px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #about .card {
-            background: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #2F2F2F;
-        }
-
-        #about .card::before {
-            background: #14543F;
-        }
-
-        #about .card p {
-            color:  #6A6A6A;
-        }
-
-        #product .why {
-            padding: 18px;
-            border-radius: var(--radius);
-        }
-
-        #product .quote,
-        #product .why .card,
-        #product .product-cards .card {
-            background: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #2F2F2F;
-        }
-
-        #product .card::before {
-            background: #AB2B2A;
-        }
-
-        #product .quote span,
-        #product .why .card p,
-        #product .product-cards .card p,
-        #product .meta-line,
-        #product .benefits {
-            color: #6A6A6A;
-        }
-
-        #product .product-image {
-            border-color: rgba(255, 255, 255, 0.16);
-            color: #AB2B2A;
-            background: radial-gradient(120% 120% at 30% 20%, #580f0f rgba(4, 29, 20, 0.88));
-        }
-
-        #why .card {
-            background: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #2F2F2F;
-        }
-
-        #why .card::before {
-            background: #AB2B2A;
-        }
-
-        #why .card p {
-            color: #6A6A6A;
-        }
-
-        #routine .card {
-            background: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #2F2F2F;
-        }
-
-        #routine .card::before {
-            background: #AB2B2A;
-        }
-
-        #routine .card p {
-            color: #6A6A6A
-        }
-
-        #reviews .card {
-            background: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #2F2F2F;
-        }
-
-        #reviews .card::before {
-            background: #AB2B2A;
-        }
-
-        #reviews .card p {
-            color: #6A6A6A;
-        }
-
-        #faq .card,
-        #contact .card {
-            background: #FFFFFF;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #2F2F2F;
-        }
-
-        #faq .card::before,
-        #contact .card::before {
-            background: #AB2B2A;
-        }
-
-        #faq .card p,
-        #contact .card p {
-            color: #6A6A6A
-        }
-
-        #contact .field label {
-            color: #6A6A6A;
-        }
-
-        #contact .field input,
-        #contact .field textarea {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #AB2B2A;
-            color: black;
-        }
-
-        #contact .field input::placeholder,
-        #contact .field textarea::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), rgba(193, 18, 31, 0.18));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .hero h1,
-        .section-title,
-        .card h3,
-        .product-meta h3,
-        .hero-card h3,
-        .stat strong {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-        .carousel-slide.is-active .product-meta h3 {
-            animation: fadeInUp 620ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-        }
-
-        .carousel-slide.is-active .product-meta p {
-            animation: fadeInUp 720ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-            animation-delay: 80ms;
-        }
-
-        .carousel-slide.is-active .pill-row {
-            animation: fadeInUp 820ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-            animation-delay: 140ms;
-        }
-
-        .section {
-            opacity: 0;
-            transform: translate3d(0, 14px, 0);
-            transition: opacity 480ms ease, transform 480ms ease;
-        }
-
-        .section.in-view {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow);
-        }
-
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card h3 {
-            font-family: 'Georgia', serif;
-            font-weight: 300;
-            letter-spacing: 1px;
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .carousel {
-            position: relative;
-            border-radius: var(--radius);
-            border: 1px solid #F0E6E2;
-            background: #FFFFFF;
-            color: black;
-            overflow: hidden;
-            box-shadow: 0 26px 70px rgba(0,0,0,0.08);
-        }
-        .product-meta h3, p{
-            color: #0b0b0b;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
-            will-change: transform;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
-            gap: 18px;
-            padding: 26px;
-            align-items: center;
-        }
-
-        .product-visual {
-            border-radius: 16px;
-            border: 1px solid rgba(232, 232, 232, 0.9);
-            background: radial-gradient(120% 120% at 30% 20%, rgba(254, 205, 211, 0.5), rgba(255, 255, 255, 0.86));
-            padding: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 240px;
-        }
-
-        .product-visual svg {
-            width: min(320px, 100%);
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 28px 40px rgba(0, 0, 0, 0.12));
-        }
-
-        .product-meta h3 {
-            font-family: 'Georgia', serif;
-            font-weight: 300;
-            letter-spacing: 1px;
-            font-size: 1.65rem;
-            margin-bottom: 10px;
-        }
-
-        .product-meta p {
-            color:#5A5A5A;
-            line-height: 1.85;
-            font-size: 1rem;
-            margin-bottom: 14px;
-        }
-
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            border: 1px solid #E8CFC8;
-            background: #F6E6E2;
-            color: #AB2B2A;
-            border-radius: 999px;
-            padding: 10px 12px;
-            font-size: 0.78rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .carousel-controls {
-            position: absolute;
-            inset: auto 0 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 14px;
-            background: linear-gradient(180deg, rgba(255, 244, 247, 0), rgba(248, 222, 229, 0.96));
-        }
-
-        .carousel-btns {
-            display: flex;
-            gap: 10px;
-        }
-
-        .icon-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.10);
-            color: #ffffff;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-        }
-
-        .icon-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
-            background: rgba(255, 255, 255, 0.16);
-        }
-
-        .icon-btn:active {
-            transform: translateY(0);
-        }
-
-        .dots {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            border: 1px solid rgba(142, 240, 198, 0.55);
-            background: rgba(142, 240, 198, 0.16);
-            cursor: pointer;
-            transition: width 0.2s ease, background 0.2s ease;
-        }
-
-        .dot.active {
-            width: 26px;
-            background: linear-gradient(90deg, rgba(142, 240, 198, 0.92), rgba(255, 255, 255, 0.60));
-        }
-
-        .why {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 18px;
-            margin-top: 22px;
-        }
-
-        .quote {
-            grid-column: span 12;
-            padding: 20px 22px;
-            border-radius: var(--radius);
-            border: 1px solid rgba(232, 232, 232, 0.9);
-            background: rgba(255, 255, 255, 0.75);
-        }
-
-        .quote strong {
-            font-family: 'Georgia', serif;
-            font-weight: 300;
-            letter-spacing: 1px;
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .quote span {
-            color: var(--muted);
-            line-height: 1.75;
-            display: block;
-        }
-
-        .span-4 {
-            grid-column: span 4;
-        }
-
-        .span-6 {
-            grid-column: span 6;
-        }
-
-        .span-8 {
-            grid-column: span 8;
-        }
-
-        .span-12 {
-            grid-column: span 12;
-        }
-
-        .center-span-4 {
-            grid-column: 5 / span 4;
-            justify-self: center;
-        }
-
-        .product-cards .grid > .card:only-child {
-            grid-column: 5 / span 4;
-            justify-self: center;
-        }
-
-        .grid > .card.span-4:only-child {
-            grid-column: 5 / span 4;
-            justify-self: center;
-        }
-
-        .form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-top: 18px;
-        }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .field label {
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .field input,
-        .field textarea {
-            padding: 14px 16px;
-            border: 1px solid rgba(224, 224, 224, 1);
-            border-radius: 12px;
-            background: rgba(250, 250, 250, 0.9);
-            outline: none;
-            font-size: 0.95rem;
-            color: var(--text);
-            transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-
-        .field textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .field input:focus,
-        .field textarea:focus {
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 0 3px rgba(193, 18, 31, 0.12);
-        }
-
-        .form .span-2 {
-            grid-column: 1 / -1;
-        }
-
-        .footer {
-            padding: 26px 0 30px;
-            border-top: 1px solid #F2E8E5;
-            background:#FFFFFF;
-            --text: #2F2F2F;
-            --muted: rgba(255, 255, 255, 0.72);
-        }
-
-        .footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .footer a {
-            color: #2F2F2F;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.8rem;
-            position: relative;
-        }
-
-        .footer a:hover {
-            color: var(--text);
-        }
-
-        .footer small {
-            color: var(--muted);
-        }
-
-        .luxury-accent {
-            position: absolute;
-            top: 90px;
-            right: 40px;
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .luxury-accent::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--accent);
-            border-radius: 50%;
-        }
-
-        @media (max-width: 900px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-btn {
-                display: inline-flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .nav {
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(4, 29, 20, 0.98);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-                padding: 12px 20px 18px;
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .nav.open {
-                display: flex;
-            }
-
-            .nav-item {
-                width: 100%;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-
-            .dropdown {
-                position: static;
-                display: block;
-                width: 100%;
-                min-width: 0;
-                padding: 0;
-                border: none;
-                background: transparent;
-                box-shadow: none;
-            }
-
-            .dropdown a {
-                padding: 10px 14px;
-                background: rgba(255, 255, 255, 0.08);
-                border: 1px solid rgba(255, 255, 255, 0.12);
-            }
-
-            .nav-cta {
-                width: 100%;
-                justify-content: flex-start;
-            }
-
-            .brand-name {
-                letter-spacing: 4px;
-            }
-
-            .section {
-                padding: 52px 0;
-            }
-
-            .span-4,
-            .span-6,
-            .span-8 {
-                grid-column: span 12;
-            }
-
-            .center-span-4 {
-                grid-column: span 12;
-                justify-self: stretch;
-            }
-
-            .product-cards .grid > .card:only-child {
-                grid-column: span 12;
-                justify-self: stretch;
-            }
-
-            .grid > .card.span-4:only-child {
-                grid-column: span 12;
-                justify-self: stretch;
-            }
-
-            .form {
-                grid-template-columns: 1fr;
-            }
-
-            .carousel-slide {
-                grid-template-columns: 1fr;
-                padding: 18px;
-            }
-
-            .product-visual {
-                min-height: 220px;
-            }
-
-            .carousel-controls {
-                position: static;
-                background: linear-gradient(180deg, rgba(255, 247, 249, 0.95), rgba(246, 219, 227, 0.98));
-            }
-
-            .hero-top {
-                margin-bottom: 18px;
-            }
-
-            .luxury-accent {
-                width: 52px;
-                height: 52px;
-                top: 82px;
-                right: 18px;
-            }
-
-            .luxury-accent::before {
-                width: 26px;
-                height: 26px;
-            }
-        }
-    </style>
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- Google Fonts Css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="css/slicknav.min.css" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- Font Awesome Icon Css-->
+    <link href="css/all.min.css" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Mouse Cursor Css File -->
+    <link rel="stylesheet" href="css/mousecursor.css">
+    <!-- Main Custom Css -->
+    <link href="css/custom.css" rel="stylesheet" media="screen">
 </head>
+
 <body>
-    <div class="page">
-        <div class="luxury-accent"></div>
 
-        <header class="topbar">
-            <div class="container">
-                <div class="topbar-inner">
-                    <a class="brand" href="#home">
-                        <span class="brand-name">CRILOF</span>
-                        <span class="brand-tag">Skin Care</span>
+    <!-- Preloader Start -->
+    <div class="preloader">
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Header Start -->
+    <header class="main-header">
+        <div class="header-sticky">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <!-- Logo Start -->
+                    <a class="navbar-brand" href="./">
+                        <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; letter-spacing: 0.12em; font-size: 32px; line-height: 1; color: #fff;">CRILOF</span>
                     </a>
+                    <!-- Logo End -->   
 
-                    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
-                        <span></span>
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#about-us">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#our-products">Products</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#why">Why Choose Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="routine.html">Skincare Routine</a></li>
+                                <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                                <li class="nav-item"><a class="nav-link" href="faq.html">FAQs</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                            </ul>
+                        </div>
 
-            @media (max-width: 768px) {
-                .menu-btn {
-                    display: inline-flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .nav {
-                    position: absolute;
-                    top: 64px;
-                    left: 0;
-                    right: 0;
-                    background: rgba(4, 29, 20, 0.98);
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-                    padding: 12px 20px 18px;
-                    display: none;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 10px;
-                }
-
-                .nav.open {
-                    display: flex;
-                }
-
-                .nav-item {
-                    width: 100%;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 6px;
-                }
-
-                .dropdown {
-                    position: static;
-                    display: block;
-                    width: 100%;
-                    min-width: 0;
-                    padding: 0;
-                    border: none;
-                    background: transparent;
-                    box-shadow: none;
-                }
-
-                .dropdown a {
-                    padding: 10px 14px;
-                    background: rgba(255, 255, 255, 0.08);
-                    border: 1px solid rgba(255, 255, 255, 0.12);
-                }
-
-                .nav-cta {
-                    width: 100%;
-                    justify-content: flex-start;
-                }
-
-                .brand-name {
-                    letter-spacing: 4px;
-                }
-
-                .section {
-                    padding: 52px 0;
-                }
-
-                .span-4,
-                .span-6,
-                .span-8 {
-                    grid-column: span 12;
-                }
-
-                .form {
-                    grid-template-columns: 1fr;
-                }
-
-                .carousel-slide {
-                    grid-template-columns: 1fr;
-                    padding: 18px;
-                }
-
-                .product-visual {
-                    min-height: 220px;
-                }
-
-                .carousel-controls {
-                    position: static;
-                    background: linear-gradient(180deg, rgba(255, 247, 249, 0.95), rgba(246, 219, 227, 0.98));
-                }
-
-                .hero-top {
-                    margin-bottom: 18px;
-                }
-
-                .luxury-accent {
-                    width: 52px;
-                    height: 52px;
-                    top: 82px;
-                    right: 18px;
-                }
-
-                .luxury-accent::before {
-                    width: 26px;
-                    height: 26px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="page">
-            <div class="luxury-accent"></div>
-
-            <header class="topbar">
-                <div class="container">
-                    <div class="topbar-inner">
-                        <a class="brand" href="#home">
-                            <span class="brand-name">CRILOF</span>
-                            <span class="brand-tag">Skin Care</span>
-                        </a>
-
-                        <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-
-                        <nav class="nav" aria-label="Primary">
-                            <a href="#home" data-section="home">Home</a>
-
-                            <div class="nav-item">
-                                <a href="#about" data-section="about">About Us</a>
-                                <div class="dropdown" aria-label="About menu">
-                                    <a href="#why" data-section="why">Why Choose Us</a>
-                                </div>
-                            </div>
-
-                            <div class="nav-item">
-                                <a href="#product" data-section="product">Product</a>
-                                <div class="dropdown" aria-label="Product menu">
-                                    <a href="#reviews" data-section="reviews">Review</a>
-                                </div>
-                            </div>
-
-                            <div class="nav-item">
-                                <a href="#faq" data-section="faq">FAQ</a>
-                                <div class="dropdown" aria-label="FAQ menu">
-                                    <a href="#routine" data-section="routine">Routine</a>
-                                </div>
-                            </div>
-
-                            <a class="nav-cta" href="#contact" data-section="contact" id="contactUsbtn">Contact Us</a>
-                        </nav>
+                        <!-- Header Contact Btn Start -->
+                        <!-- Header Contact Btn End -->
                     </div>
+                    <!-- Main Menu End -->
+                    <div class="navbar-toggle"></div>
                 </div>
-            </header>
+            </nav>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header End -->
 
-            <main>
-                <section class="hero" id="home">
-                    <div class="container">
-                        <div class="hero-top">
-                            <div class="carousel" id="heroCarousel" aria-label="Hero carousel">
-                                <div class="carousel-track" role="list">
-                                    <div class="carousel-slide" role="listitem">
-                                        <div class="product-visual" aria-hidden="true">
-                                            <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-                                                <defs>
-                                                    <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
-                                                        <stop offset="0" stop-color="#ffffff"/>
-                                                        <stop offset="0.55" stop-color="#fecdd3"/>
-                                                        <stop offset="1" stop-color="#c1121f"/>
-                                                    </linearGradient>
-                                                    <linearGradient id="hglass1" x1="0" y1="0" x2="0" y2="1">
-                                                        <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
-                                                        <stop offset="1" stop-color="#ffffff" stop-opacity="0.25"/>
-                                                    </linearGradient>
-                                                </defs>
-                                                <ellipse cx="160" cy="330" rx="104" ry="18" fill="#000" opacity="0.12"/>
-                                                <rect x="120" y="40" width="80" height="52" rx="14" fill="#1a1a1a" opacity="0.9"/>
-                                                <rect x="108" y="84" width="104" height="22" rx="11" fill="url(#hg1)" opacity="0.96"/>
-                                                <rect x="70" y="100" width="180" height="206" rx="36" fill="url(#hglass1)" stroke="#e8e8e8"/>
-                                                <rect x="94" y="176" width="132" height="70" rx="16" fill="#ffffff" opacity="0.93"/>
-                                                <text x="160" y="206" text-anchor="middle" font-family="Georgia" font-size="16" fill="#1a1a1a" letter-spacing="2">CRILOF</text>
-                                                <text x="160" y="228" text-anchor="middle" font-family="Helvetica" font-size="10" fill="#666" letter-spacing="2">LUXURY DERMA CARE</text>
-                                            </svg>
-                                        </div>
-                                        <div class="product-meta">
-                                            <h3>What we are</h3>
-                                            <p>CRILOF is luxury skincare built for real life. Soft textures, refined fragrance-free feel, and a routine that looks premium and feels effortless.</p>
-                                            <div class="pill-row">
-                                                <span class="pill">Minimal Luxury</span>
-                                                <span class="pill">Daily Confidence</span>
-                                                <span class="pill">Skin Comfort</span>
-                                            </div>
-                                        </div>
-                                    </div>
+    <!-- Hero Section Start -->
+    <div class="hero dark-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Hero Content Start -->
+                    <div class="hero-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h1 class="wow fadeInUp">Welcome to CRILOF</h1>
+                            <h1 class="text-anime-style-3" data-cursor="-opaque">Reveal your most radiant self with
+                                luxury skincare</h1>
+                        </div>
+                        <!-- Section Title End -->
 
-                                    <div class="carousel-slide" role="listitem">
-                                        <div class="product-visual" aria-hidden="true">
-                                            <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-                                                <defs>
-                                                    <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1">
-                                                        <stop offset="0" stop-color="#fecdd3"/>
-                                                        <stop offset="0.55" stop-color="#c1121f"/>
-                                                        <stop offset="1" stop-color="#fff1f2"/>
-                                                    </linearGradient>
-                                                    <linearGradient id="hglass2" x1="0" y1="0" x2="0" y2="1">
-                                                        <stop offset="0" stop-color="#ffffff" stop-opacity="0.88"/>
-                                                        <stop offset="1" stop-color="#ffffff" stop-opacity="0.25"/>
-                                                    </linearGradient>
-                                                </defs>
-                                                <ellipse cx="160" cy="330" rx="96" ry="18" fill="#000" opacity="0.12"/>
-                                                <rect x="128" y="42" width="64" height="58" rx="16" fill="#1a1a1a" opacity="0.9"/>
-                                                <rect x="106" y="98" width="108" height="20" rx="10" fill="url(#hg2)" opacity="0.96"/>
-                                                <rect x="82" y="112" width="156" height="194" rx="34" fill="url(#hglass2)" stroke="#e8e8e8"/>
-                                                <rect x="100" y="178" width="120" height="66" rx="16" fill="#ffffff" opacity="0.93"/>
-                                                <text x="160" y="206" text-anchor="middle" font-family="Georgia" font-size="16" fill="#1a1a1a" letter-spacing="2">CRILOF</text>
-                                                <text x="160" y="228" text-anchor="middle" font-family="Helvetica" font-size="10" fill="#666" letter-spacing="2">SIGNATURE RANGE</text>
-                                            </svg>
-                                        </div>
-                                        <div class="product-meta">
-                                            <h3>Our products</h3>
-                                            <p>From cleanser to serum to barrier cream — each product is designed to layer beautifully, so your routine feels calm, clean, and expensive.</p>
-                                            <div class="pill-row">
-                                                <span class="pill">Cleanse</span>
-                                                <span class="pill">Treat</span>
-                                                <span class="pill">Hydrate</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <!-- Hero Body Start -->
+                        <div class="hero-body wow fadeInUp" data-wow-delay="0.2s">
+                            <!-- Hero Button Start -->
+                            <div class="hero-btn">
+                                <a href="#" class="btn-default">Buy on Amazon &nbsp;<img src="images/amazon-icon.svg" alt="Amazon"></a>
+                                <a href="#" class="btn-default">Buy on Flipkart &nbsp;<img src="images/flipkart-icon.svg" alt="Flipkart"></a>
+                            </div>
+                            <!-- Hero Button End -->
+                        </div>
+                        <!-- Hero Body End -->
 
-                                    <div class="carousel-slide" role="listitem">
-                                        <div class="product-visual" aria-hidden="true">
-                                            <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-                                                <defs>
-                                                    <linearGradient id="hg3" x1="0" y1="0" x2="1" y2="1">
-                                                        <stop offset="0" stop-color="#ffffff"/>
-                                                        <stop offset="0.55" stop-color="#fff1f2"/>
-                                                        <stop offset="1" stop-color="#c1121f"/>
-                                                    </linearGradient>
-                                                    <linearGradient id="hglass3" x1="0" y1="0" x2="0" y2="1">
-                                                        <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
-                                                        <stop offset="1" stop-color="#ffffff" stop-opacity="0.28"/>
-                                                    </linearGradient>
-                                                </defs>
-                                                <ellipse cx="160" cy="330" rx="100" ry="18" fill="#000" opacity="0.12"/>
-                                                <rect x="124" y="40" width="72" height="52" rx="14" fill="#1a1a1a" opacity="0.9"/>
-                                                <rect x="110" y="84" width="100" height="22" rx="11" fill="url(#hg3)" opacity="0.96"/>
-                                                <rect x="74" y="100" width="172" height="206" rx="36" fill="url(#hglass3)" stroke="#e8e8e8"/>
-                                                <rect x="92" y="176" width="136" height="70" rx="16" fill="#ffffff" opacity="0.93"/>
-                                                <text x="160" y="206" text-anchor="middle" font-family="Georgia" font-size="16" fill="#1a1a1a" letter-spacing="2">CRILOF</text>
-                                                <text x="160" y="228" text-anchor="middle" font-family="Helvetica" font-size="10" fill="#666" letter-spacing="2">WHY CHOOSE US</text>
-                                            </svg>
-                                        </div>
-                                        <div class="product-meta">
-                                            <h3>Why choose us</h3>
-                                            <p>Because you deserve skincare that feels like self-respect. A quiet luxury that makes you look fresh, feel confident, and stay remembered.</p>
-                                            <div class="pill-row">
-                                                <span class="pill">Trusted Routine</span>
-                                                <span class="pill">Premium Feel</span>
-                                                <span class="pill">Real Results</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <!-- Hero Footer Start -->
+                        <div class="hero-footer wow fadeInUp" data-wow-delay="0.4s">
+                            <!-- Hero Footer Item Start -->
+                            <div class="hero-footer-item">
+                                <div class="icon-box">
+                                    <img src="images/icon-hero-footer-1.svg" alt="">
                                 </div>
-
-                                <div class="carousel-controls">
-                                    <div class="carousel-btns">
-                                        <button class="icon-btn" type="button" data-action="prev" aria-label="Previous slide">‹</button>
-                                        <button class="icon-btn" type="button" data-action="next" aria-label="Next slide">›</button>
-                                    </div>
-                                    <div class="dots" aria-label="Slide navigation">
-                                        <button class="dot active" type="button" data-index="0" aria-label="Go to slide 1"></button>
-                                        <button class="dot" type="button" data-index="1" aria-label="Go to slide 2"></button>
-                                        <button class="dot" type="button" data-index="2" aria-label="Go to slide 3"></button>
-                                    </div>
+                                <div class="hero-footer-item-content">
+                                    <h3>Natural Radiance</h3>
+                                    <p>Enhance your beauty with our natural ingredients.</p>
                                 </div>
                             </div>
-                        </div>
+                            <!-- Hero Footer Item End -->
 
-                        <div class="hero-grid">
-                            <div>
-                                <span class="kicker">Luxury Derma Care</span>
-                                <h1>Premium skincare crafted with botanical elegance and scientific precision.</h1>
-                                <p>CRILOF delivers refined formulations designed to support healthy, radiant skin. Thoughtfully sourced ingredients, dermatologist-inspired routines, and a luxury experience from the first touch.</p>
-                                <div class="hero-actions">
-                                    <a class="btn btn-primary" href="https://www.amazon.com/" target="_blank" rel="noreferrer">Buy on Amazon</a>
-                                    <a class="btn btn-ghost" href="#product">Explore Products</a>
+                            <!-- Hero Footer Item Start -->
+                            <div class="hero-footer-item">
+                                <div class="icon-box">
+                                    <img src="images/icon-hero-footer-2.svg" alt="">
+                                </div>
+                                <div class="hero-footer-item-content">
+                                    <h3>Glowing Complexion</h3>
+                                    <p>Transform your skin with our advanced formulas.</p>
                                 </div>
                             </div>
+                            <!-- Hero Footer Item End -->
                         </div>
+                        <!-- Hero Footer End -->
                     </div>
+                    <!-- Hero Content End -->
                 </div>
-            </section>
-
-            <section class="section" id="about">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <h2 class="section-title">About Us</h2>
-                            <p class="section-subtitle">At <b> CRILOF </b>, we believe skincare should feel both effective and effortless.
-Guided by contemporary formulation practices and quality-focused development, our products are designed to support skin comfort and daily care.
-Each formula reflects our commitment to simplicity, reliability, and elevated skincare essentials.</p>
-                        </div>Precision Formulation
+                <div class="col-lg-6">
+                    <!-- Hero Image Start -->
+                    <div class="hero-image">
+                        <figure>
+                            <img src="images/hero-image.png" alt="CRILOF Skincare Products">
+                        </figure>
                     </div>
-
-                    <div class="grid">
-                        <div class="card span-4">
-                            <h3>Precision Formulation</h3>
-                            <p>Every formula is thoughtfully developed using carefully selected ingredients to create balanced, effective skincare suitable for everyday use. Designed to deliver comfort and consistency across a wide range of skin types.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Modern Skin Science</h3>
-                            <p>Our formulations are guided by contemporary skincare knowledge and evolving research insights. Each product is crafted to support skin comfort, resilience, and a healthy-looking appearance over time.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Quality You Can Trust</h3>
-                            <p>We maintain strict standards in ingredient selection and product development to ensure dependable quality. Each formula is created with attention to detail for a refined and reliable skincare experience.</p>
-                        </div>
-                    </div>
+                    <!-- Hero Image End -->
                 </div>
-            </section>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Section End -->
 
-            <section class="section" id="product">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <h2 class="section-title">Product</h2>
-                            <p class="section-subtitle">A curated range designed to fit into your daily ritual. Replace the names and details below with your real product catalog whenever you’re ready.</p>
-                        </div>
+    <!-- Our Scrolling Ticker Section Start -->
+    <div class="our-scrolling-ticker">
+        <!-- Scrolling Ticker Start -->
+        <div class="scrolling-ticker-box">
+            <div class="scrolling-content">
+                <span><img src="images/asterisk-icon.svg" alt="">Flawless Skin, Every Time</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Radiate Confidence Daily</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Glow Like Never Before</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Smooth, Silky, Stunning</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Your Skin's Best Friend</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Flawless Skin, Every Time</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Radiate Confidence Daily</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Glow Like Never Before</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Smooth, Silky, Stunning</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Your Skin's Best Friend</span>
+            </div>
+
+            <div class="scrolling-content">
+                <span><img src="images/asterisk-icon.svg" alt="">Flawless Skin, Every Time</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Radiate Confidence Daily</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Glow Like Never Before</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Smooth, Silky, Stunning</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Your Skin's Best Friend</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Flawless Skin, Every Time</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Radiate Confidence Daily</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Glow Like Never Before</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Smooth, Silky, Stunning</span>
+                <span><img src="images/asterisk-icon.svg" alt="">Your Skin's Best Friend</span>
+            </div>
+        </div>
+    </div>
+    <!-- Our Scrolling Ticker Section End -->
+
+    <!-- About Us Section Start -->
+    <div class="about-us" id="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- About Images Start -->
+                    <div class="about-images">
+                        <figure>
+                            <img src="images/about-img.png" alt="About CRILOF">
+                        </figure>
                     </div>
-
-                    <div class="carousel" id="productCarousel" aria-label="Product carousel">
-                        <div class="carousel-track" role="list">
-                            <div class="carousel-slide" role="listitem">
-                                <div class="product-visual" aria-hidden="true">
-                                    <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-                                        <defs>
-                                            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                                                <stop offset="0" stop-color="#fecdd3"/>
-                                                <stop offset="0.55" stop-color="#c1121f"/>
-                                                <stop offset="1" stop-color="#fff1f2"/>
-                                            </linearGradient>
-                                            <linearGradient id="glass1" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
-                                                <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.55"/>
-                                                <stop offset="1" stop-color="#ffffff" stop-opacity="0.25"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <ellipse cx="160" cy="330" rx="92" ry="18" fill="#000" opacity="0.12"/>
-                                        <rect x="124" y="40" width="72" height="52" rx="14" fill="#1a1a1a" opacity="0.88"/>
-                                        <rect x="112" y="82" width="96" height="22" rx="11" fill="url(#g1)" opacity="0.95"/>
-                                        <rect x="86" y="98" width="148" height="208" rx="34" fill="url(#glass1)" stroke="#e8e8e8"/>
-                                        <path d="M110 128c30-24 72-24 102 0" fill="none" stroke="#ffffff" opacity="0.5" stroke-width="8" stroke-linecap="round"/>
-                                        <rect x="112" y="170" width="96" height="66" rx="14" fill="#ffffff" opacity="0.92"/>
-                                        <text x="160" y="198" text-anchor="middle" font-family="Georgia" font-size="16" fill="#1a1a1a" letter-spacing="2">CRILOF</text>
-                                        <text x="160" y="220" text-anchor="middle" font-family="Helvetica" font-size="10" fill="#666" letter-spacing="2">RADIANCE SERUM</text>
-                                    </svg>
-                                </div>
-                                <div class="product-meta">
-                                    <h3>Radiance Serum</h3>
-                                    <p>A feather-light glow serum crafted to make your skin look clearer, smoother, and visibly more alive — the kind of radiance people notice before you say a word.</p>
-                                    <div class="pill-row">
-                                        <span class="pill">Glow Boost</span>
-                                        <span class="pill">Fast Absorb</span>
-                                        <span class="pill">Daily Ritual</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide" role="listitem">
-                                <div class="product-visual" aria-hidden="true">
-                                    <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-                                        <defs>
-                                            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-                                                <stop offset="0" stop-color="#ffffff"/>
-                                                <stop offset="0.5" stop-color="#fecdd3"/>
-                                                <stop offset="1" stop-color="#c1121f"/>
-                                            </linearGradient>
-                                            <linearGradient id="glass2" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0" stop-color="#ffffff" stop-opacity="0.88"/>
-                                                <stop offset="1" stop-color="#ffffff" stop-opacity="0.3"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <ellipse cx="160" cy="330" rx="98" ry="18" fill="#000" opacity="0.12"/>
-                                        <rect x="132" y="44" width="56" height="56" rx="14" fill="#1a1a1a" opacity="0.9"/>
-                                        <rect x="108" y="96" width="104" height="20" rx="10" fill="url(#g2)" opacity="0.95"/>
-                                        <rect x="78" y="110" width="164" height="196" rx="34" fill="url(#glass2)" stroke="#e8e8e8"/>
-                                        <rect x="102" y="174" width="116" height="70" rx="16" fill="#ffffff" opacity="0.93"/>
-                                        <text x="160" y="204" text-anchor="middle" font-family="Georgia" font-size="16" fill="#1a1a1a" letter-spacing="2">CRILOF</text>
-                                        <text x="160" y="226" text-anchor="middle" font-family="Helvetica" font-size="10" fill="#666" letter-spacing="2">BARRIER CREAM</text>
-                                        <path d="M114 138c44-16 70-16 92 0" fill="none" stroke="#ffffff" opacity="0.55" stroke-width="8" stroke-linecap="round"/>
-                                    </svg>
-                                </div>
-                                <div class="product-meta">
-                                    <h3>Barrier Cream</h3>
-                                    <p>Soft comfort, all day. This rich-but-light cream helps your skin feel calm and deeply moisturized — as if it finally exhaled.</p>
-                                    <div class="pill-row">
-                                        <span class="pill">Deep Hydration</span>
-                                        <span class="pill">Skin Comfort</span>
-                                        <span class="pill">Silky Finish</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide" role="listitem">
-                                <div class="product-visual" aria-hidden="true">
-                                    <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-                                        <defs>
-                                            <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-                                                <stop offset="0" stop-color="#c1121f"/>
-                                                <stop offset="0.6" stop-color="#fecdd3"/>
-                                                <stop offset="1" stop-color="#ffffff"/>
-                                            </linearGradient>
-                                            <linearGradient id="glass3" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0" stop-color="#ffffff" stop-opacity="0.86"/>
-                                                <stop offset="1" stop-color="#ffffff" stop-opacity="0.28"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <ellipse cx="160" cy="330" rx="104" ry="18" fill="#000" opacity="0.12"/>
-                                        <rect x="120" y="40" width="80" height="38" rx="12" fill="#1a1a1a" opacity="0.9"/>
-                                        <rect x="108" y="74" width="104" height="22" rx="11" fill="url(#g3)" opacity="0.95"/>
-                                        <rect x="70" y="94" width="180" height="212" rx="36" fill="url(#glass3)" stroke="#e8e8e8"/>
-                                        <rect x="96" y="170" width="128" height="76" rx="16" fill="#ffffff" opacity="0.93"/>
-                                        <text x="160" y="205" text-anchor="middle" font-family="Georgia" font-size="16" fill="#1a1a1a" letter-spacing="2">CRILOF</text>
-                                        <text x="160" y="228" text-anchor="middle" font-family="Helvetica" font-size="10" fill="#666" letter-spacing="2">HYDRA CLEANSER</text>
-                                        <path d="M110 132c34-26 76-26 100 0" fill="none" stroke="#ffffff" opacity="0.5" stroke-width="8" stroke-linecap="round"/>
-                                    </svg>
-                                </div>
-                                <div class="product-meta">
-                                    <h3>Hydra Cleanser</h3>
-                                    <p>A gentle cleanse that leaves your skin feeling fresh — never tight. Because the first step should feel like care, not compromise.</p>
-                                    <div class="pill-row">
-                                        <span class="pill">Gentle Cleanse</span>
-                                        <span class="pill">Soft Skin</span>
-                                        <span class="pill">Everyday Use</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide" role="listitem">
-                                <div class="product-visual" aria-hidden="true">
-                                    <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-                                        <defs>
-                                            <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
-                                                <stop offset="0" stop-color="#fff1f2"/>
-                                                <stop offset="0.55" stop-color="#c1121f"/>
-                                                <stop offset="1" stop-color="#fecdd3"/>
-                                            </linearGradient>
-                                            <linearGradient id="glass4" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
-                                                <stop offset="1" stop-color="#ffffff" stop-opacity="0.25"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <ellipse cx="160" cy="330" rx="96" ry="18" fill="#000" opacity="0.12"/>
-                                        <rect x="128" y="42" width="64" height="58" rx="16" fill="#1a1a1a" opacity="0.9"/>
-                                        <rect x="106" y="96" width="108" height="20" rx="10" fill="url(#g4)" opacity="0.96"/>
-                                        <rect x="82" y="110" width="156" height="196" rx="34" fill="url(#glass4)" stroke="#e8e8e8"/>
-                                        <rect x="100" y="176" width="120" height="68" rx="16" fill="#ffffff" opacity="0.93"/>
-                                        <text x="160" y="206" text-anchor="middle" font-family="Georgia" font-size="16" fill="#1a1a1a" letter-spacing="2">CRILOF</text>
-                                        <text x="160" y="228" text-anchor="middle" font-family="Helvetica" font-size="10" fill="#666" letter-spacing="2">NIGHT ELIXIR</text>
-                                        <path d="M116 140c42-18 64-18 88 0" fill="none" stroke="#ffffff" opacity="0.55" stroke-width="8" stroke-linecap="round"/>
-                                    </svg>
-                                </div>
-                                <div class="product-meta">
-                                    <h3>Night Elixir</h3>
-                                    <p>Wake up to a softer, more rested look. A night ritual designed to feel indulgent — and look like it the next morning.</p>
-                                    <div class="pill-row">
-                                        <span class="pill">Overnight Care</span>
-                                        <span class="pill">Luxury Feel</span>
-                                        <span class="pill">Visible Softness</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- <div class="carousel-controls">
-                            <div class="carousel-btns">
-                                <button class="icon-btn" type="button" data-action="prev" aria-label="Previous slide">‹</button>
-                                <button class="icon-btn" type="button" data-action="next" aria-label="Next slide">›</button>
-                            </div>
-                            <div class="dots" aria-label="Slide navigation">
-                                <button class="dot active" type="button" data-index="0" aria-label="Go to slide 1"></button>
-                                <button class="dot" type="button" data-index="1" aria-label="Go to slide 2"></button>
-                                <button class="dot" type="button" data-index="2" aria-label="Go to slide 3"></button>
-                                <button class="dot" type="button" data-index="3" aria-label="Go to slide 4"></button>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="why" aria-label="Why choose our products">
-                        <div class="quote">
-                            <strong>Why choose CRILOF?</strong>
-                            <span>Because skincare isn’t only about looking good — it’s about feeling confident in your own skin. We craft products that feel luxurious on first touch and deliver comfort you can trust every day.</span>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Visible Care</h3>
-                            <p>Formulated for a refined glow and smoother-looking texture — subtle, elegant results that feel real.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Gentle Strength</h3>
-                            <p>Balanced routines that support your skin barrier, so your skin feels calm, hydrated, and protected.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Luxury Ritual</h3>
-                            <p>A premium experience designed to fit your day — simple steps, rich textures, lasting impression.</p>
-                        </div>
-                    </div>
-
-                    <div class="product-cards">
-                        <div class="grid">
-                            <div class="card span-4 center-span-4">
-                                <div class="product-image">Product Image</div>
-                                <h3 style="margin-top: 14px;">Aloe Hydrating Face Gel</h3>
-                                <p>Lightweight hydration that calms the skin and leaves a clean, comfortable finish.</p>
-                                <ul class="benefits">
-                                    <li>Hydrates without heaviness</li>
-                                    <li>Comfort-first feel</li>
-                                    <li>Layers well under sunscreen</li>
-                                </ul>
-                                <div class="meta-line">Skin type: Normal / Oily / Combination</div>
-                                <div class="hero-actions" style="margin-top: 16px;">
-                                    <a class="btn btn-primary" href="https://www.amazon.com/" target="_blank" rel="noreferrer">Buy on Amazon</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- About Images End -->
                 </div>
-            </section>
 
-            <section class="section" id="why">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <h2 class="section-title">Why Choose Us</h2>
-                            <p class="section-subtitle">What makes CRILOF a routine you’ll want to keep — simple, skin-safe, and available on Amazon.</p>
+                <div class="col-lg-6">
+                    <!-- About us Content Start -->
+                    <div class="about-us-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">about us</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Enhancing natural beauty with
+                                innovation and care.</h2>
                         </div>
-                    </div>
+                        <!-- Section Title End -->
 
-                    <div class="grid">
-                        <div class="card span-4">
-                            <h3>Skin-safe ingredients</h3>
-                            <p>Comfort-first formulations designed for a soft feel and a clean finish.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>No parabens</h3>
-                            <p>Modern preferences, clean-feeling routine, and a premium daily experience.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Quality tested</h3>
-                            <p>Designed to feel reliable in your routine and consistent in daily use.</p>
-                        </div>
-                        <div class="card span-6">
-                            <h3>Trusted by customers</h3>
-                            <p>Skincare that feels like luxury without being complicated — made to impress on first touch.</p>
-                        </div>
-                        <div class="card span-6">
-                            <h3>Available on Amazon</h3>
-                            <p>This website is informational. Purchases are completed on Amazon.</p>
-                            <div class="hero-actions" style="margin-top: 14px;">
-                                <a class="btn btn-primary" href="https://www.amazon.com/" target="_blank" rel="noreferrer">Buy on Amazon</a>
+                        <!-- About Us Body Start -->
+                        <div class="about-us-body">
+                            <!-- About Body Item Start -->
+                            <div class="about-body-item wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="icon-box">
+                                    <img src="images/icon-about-body-1.svg" alt="">
+                                </div>
+                                <div class="about-body-item-content">
+                                    <h3>The Essence of Elegance</h3>
+                                    <p>Experience beauty redefined with elegance and sophistication. Our cosmetics blend
+                                        luxury innovation for a natural glow effortlessly.</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                            <!-- About Body Item End -->
 
-            <section class="section" id="routine">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <h2 class="section-title">Skincare Routine</h2>
-                            <p class="section-subtitle">Clean. Treat. Moisturize. Protect. A routine that’s easy to repeat and hard to forget.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid">
-                        <div class="card span-6">
-                            <h3>Clean</h3>
-                            <p>Use a gentle cleanser to refresh skin and prep it for treatment steps.</p>
-                        </div>
-                        <div class="card span-6">
-                            <h3>Treat</h3>
-                            <p>Apply your serum or targeted product to support glow and clarity.</p>
-                        </div>
-                        <div class="card span-6">
-                            <h3>Moisturize</h3>
-                            <p>Lock in hydration with a cream that keeps skin calm and comfortable.</p>
-                        </div>
-                        <div class="card span-6">
-                            <h3>Protect</h3>
-                            <p>Finish with daily SPF in the morning to help defend and maintain your glow.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section" id="reviews">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <h2 class="section-title">Customer Reviews</h2>
-                            <p class="section-subtitle">Sample testimonials (replace with real reviews later).</p>
-                        </div>
-                    </div>
-
-                    <div class="grid">
-                        <div class="card span-4">
-                            <h3>Amazon Verified Buyer</h3>
-                            <p>“The texture feels premium and my skin feels comfortable all day. The routine is simple and effective.”</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Amazon Verified Buyer</h3>
-                            <p>“I love the clean finish — it feels gentle and looks refined. Quality feels impressive.”</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Amazon Verified Buyer</h3>
-                            <p>“Skincare that feels like luxury without being complicated. My skin feels calmer and more hydrated.”</p>
-                        </div>
-                        <div class="card span-12">
-                            <h3>Amazon Verified Buyer</h3>
-                            <p>“Looks premium on the shelf, feels premium on the skin. The overall experience is elegant.”</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section" id="faq">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <h2 class="section-title">FAQ</h2>
-                            <p class="section-subtitle">Quick answers to common questions.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid">
-                        <div class="card span-4">
-                            <h3>Where to buy products?</h3>
-                            <p>CRILOF products are available on Amazon. Click “Buy on Amazon” to open Amazon in a new tab.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Suitable for sensitive skin?</h3>
-                            <p>Many customers prefer gentle routines. Always patch test and consult a dermatologist for personal advice.</p>
-                        </div>
-                        <div class="card span-4">
-                            <h3>Are products tested?</h3>
-                            <p>You can add your specific testing/dermatology details here when available.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section" id="contact">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <h2 class="section-title">Contact Us</h2>
-                            <p class="section-subtitle">Send us your message and our team will review your inquiry and respond with a confirmation shortly. We look forward to connecting with you.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid">
-                        <div class="card span-12">
-                            <h3>Message</h3>
-                            <form class="form" id="contactForm">
-                                <div class="field">
-                                    <label for="name">Name</label>
-                                    <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+                            <!-- About Body Item Start -->
+                            <div class="about-body-item wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="icon-box">
+                                    <img src="images/icon-about-body-2.svg" alt="">
                                 </div>
-                                <div class="field">
-                                    <label for="email">Email</label>
-                                    <input id="email" name="email" type="email" placeholder="Your email" autocomplete="email" required>
+                                <div class="about-body-item-content">
+                                    <h3>The Glow Within Velvet Bloom</h3>
+                                    <p>Experience beauty redefined with elegance and sophistication. Our cosmetics blend
+                                        luxury innovation for a natural glow effortlessly.</p>
                                 </div>
-                                <div class="field span-2">
-                                    <label for="message">Message</label>
-                                    <textarea id="message" name="message" placeholder="Tell us what you need" required></textarea>
-                                </div>
-                                <div class="span-2">
-                                    <button class="btn btn-primary" type="submit">Send Message</button>
-                                </div>
-                            </form>
+                            </div>
+                            <!-- About Body Item End -->
                         </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+                        <!-- About Us Body End -->
 
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-inner">
-                    <small style="color: #2F2F2F">© <span id="year"></span> CRILOF. All rights reserved.</small>
-                    <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center;">
-                        <small style="color: #2F2F2F">Products are not sold on this website. Purchases are completed on Amazon.</small>
-                        <a href="#" style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: #2F2F2F;text-decoration: none;">Privacy Policy</a>
-                        <a href="#" style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: #2F2F2F;text-decoration: none;">Terms</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Facebook</a>
-                        <a href="#">LinkedIn</a>
+                        <!-- About Us Footer Start -->
+                        <div class="about-us-footer wow fadeInUp" data-wow-delay="0.6s">
+                            <!-- About Us Button Start -->
+                            <div class="about-us-btn">
+                                <a href="about.html" class="btn-default">more about us</a>
+                            </div>
+                            <!-- About Us Button End -->
+
+                            <!-- About Contact Box Start -->
+                            <div class="about-contact-box">
+                                <div class="icon-box">
+                                    <img src="images/icon-phone.svg" alt="">
+                                </div>
+                                <div class="about-contact-box-content">
+                                    <h3>Call Us!</h3>
+                                    <p><a href="tel:+123466963">+1 - 123 466 963</a></p>
+                                </div>
+                            </div>
+                            <!-- About Contact Box End -->
+                        </div>
+                        <!-- About Us Footer End -->
+                    </div>
+                    <!-- About us Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us Section End -->
+
+    <!-- Our Products Section Start -->
+    <div class="our-products" id="our-products">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <div class="section-title section-title-center">
+                        <h3 class="wow fadeInUp">Our product</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Our Signature Product</h2>
                     </div>
                 </div>
             </div>
-        </footer>
 
-        <button class="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-item wow fadeInUp">
+                        <div class="product-image">
+                            <figure class="image-anime">
+                                <img src="images/product-1.jpg" alt="CRILOF Signature Serum">
+                            </figure>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="product-item-content">
+                                <h3>CRILOF Signature Serum</h3>
+                                <p>Premium Skincare</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-6">
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">signature formula</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Discover the luxury skincare solution that
+                            will transform your daily routine</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">Our revolutionary anti-aging serum combines the
+                            finest natural ingredients with cutting-edge science to deliver visible results in just 7
+                            days. Formulated with vitamin C, hyaluronic acid, and botanical extracts, this luxurious
+                            serum penetrates deep into your skin to restore elasticity and radiance.</p>
+                    </div>
+                    <div class="work-content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li class="wow fadeInUp" data-wow-delay="0.2s">Reduces fine lines and wrinkles</li>
+                                    <li class="wow fadeInUp" data-wow-delay="0.3s">Improves skin elasticity and firmness</li>
+                                    <li class="wow fadeInUp" data-wow-delay="0.4s">Brightens and evens skin tone</li>
+                                    <li class="wow fadeInUp" data-wow-delay="0.5s">Provides deep hydration</li>
+                                    <li class="wow fadeInUp" data-wow-delay="0.6s">Suitable for all skin types</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                <div class="d-flex flex-column align-items-center">
+                                    <a href="#" class="btn-default">Buy on Amazon&nbsp;<img src="images/amazon-icon.svg" alt="Amazon"></a>
+                                    <a href="#" class="btn-default mt-2">Buy on Flipkart&nbsp;<img src="images/flipkart-icon.svg" alt="Flipkart"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Products Section End -->
+
+    <!-- Our Benefits Section Start -->
+    <div class="our-benefits" id="why">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <div class="section-title section-title-center">
+                        <h3 class="wow fadeInUp">Why choose us</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Why Choose CRILOF</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">Experience the difference that quality ingredients
+                            and expert formulation make</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefits-box wow fadeInUp">
+                        <div class="icon-box">
+                            <img src="images/icon-benefits-box-1.svg" alt="">
+                        </div>
+                        <div class="benefits-box-content">
+                            <h3>Premium Ingredients</h3>
+                            <ul>
+                                <li>We source only the finest natural and scientifically-proven ingredients from around
+                                    the world to ensure maximum efficacy.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefits-box wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="icon-box">
+                            <img src="images/icon-benefits-box-2.svg" alt="">
+                        </div>
+                        <div class="benefits-box-content">
+                            <h3>Dermatologist Tested</h3>
+                            <ul>
+                                <li>All our products undergo rigorous testing by dermatologists to ensure they're safe,
+                                    effective, and suitable for sensitive skin.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefits-box wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="icon-box">
+                            <img src="images/icon-benefits-box-3.svg" alt="">
+                        </div>
+                        <div class="benefits-box-content">
+                            <h3>Cruelty-Free</h3>
+                            <ul>
+                                <li>We're committed to ethical beauty. None of our products are tested on animals, and
+                                    we use sustainable packaging.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Benefits Section End -->
+
+    <div class="contact-us" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">contact us</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Premium skincare support, just a
+                            message away</h2>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="contact-form">
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">send message</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Let us help you</h2>
+                        </div>
+
+                        <form class="wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="contact_name">Your Name *</label>
+                                        <input type="text" id="contact_name" name="name" class="form-control mt-2"
+                                            placeholder="Enter your name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="contact_email">Your Email *</label>
+                                        <input type="email" id="contact_email" name="email" class="form-control mt-2"
+                                            placeholder="Enter your email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="contact_message">Your Message *</label>
+                                        <textarea id="contact_message" name="message" class="form-control mt-2" rows="5"
+                                            placeholder="Write your message" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn-default btn-highlighted">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="contact-info">
+                        <div class="contact-details wow fadeInUp" data-wow-delay="0.2s">
+                            <p>Have a question about CRILOF products or need personalized guidance? Share your message
+                                and our team will respond as soon as possible.</p>
+                            <div class="contact-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="contact-item-content">
+                                    <h3>Phone</h3>
+                                    <p><a href="tel:+123466963">+1 - 123 466 963</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="contact-item-content">
+                                    <h3>Email</h3>
+                                    <p><a href="mailto:info@crilof.com">info@crilof.com</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="contact-item-content">
+                                    <h3>Address</h3>
+                                    <p>123 Beauty Street, New York, NY 10001</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        (function () {
-            const nav = document.querySelector('.nav');
-            const menuBtn = document.querySelector('.menu-btn');
-            const navLinks = Array.from(document.querySelectorAll('.nav a[data-section]'));
-            navLinks.forEach((a) => a.classList.remove('active'));
+    <!-- Main Footer Start -->
+    <footer class="main-footer dark-section mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-cta-box">
+                        <div class="footer-logo">
+                            <span style="font-family: 'Frank Ruhl Libre', serif; font-weight: 700; letter-spacing: 0.12em; font-size: 32px; line-height: 1; color: #0b6f8a;">CRILOF</span>
+                        </div>
+                        <div class="footer-social-links">
+                            <ul>
+                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-            if (menuBtn && nav) {
-                menuBtn.addEventListener('click', function () {
-                    const isOpen = nav.classList.toggle('open');
-                    menuBtn.setAttribute('aria-expanded', String(isOpen));
-                });
+                <div class="col-lg-12">
+                    <div class="footer-links-box">
+                        <div class="footer-links order-lg-1 order-1">
+                            <h3>Quick link</h3>
+                            <ul>
+                                <li><a href="./">home</a></li>
+                                <li><a href="about.html">about us</a></li>
+                                <li><a href="product.html">products</a></li>
+                                <li><a href="contact.html">contact us</a></li>
+                            </ul>
+                        </div>
 
-                nav.addEventListener('click', function (e) {
-                    const target = e.target;
-                    if (target && target.tagName === 'A' && nav.classList.contains('open')) {
-                        nav.classList.remove('open');
-                        menuBtn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
+                        <div class="footer-links order-lg-2 order-2">
+                            <h3>get in touch</h3>
+                            <div class="footer-contact-item">
+                                <div class="icon-box">
+                                    <img src="images/icon-phone.svg" alt="">
+                                </div>
+                                <div class="footer-contact-content">
+                                    <p><a href="tel:+123466963">+1 - 123 466 963</a></p>
+                                </div>
+                            </div>
+                            <div class="footer-contact-item">
+                                <div class="icon-box">
+                                    <img src="images/icon-mail.svg" alt="">
+                                </div>
+                                <div class="footer-contact-content">
+                                    <p><a href="mailto:info@crilof.com">info@crilof.com</a></p>
+                                </div>
+                            </div>
+                            <div class="footer-contact-item">
+                                <div class="icon-box">
+                                    <img src="images/icon-location.svg" alt="">
+                                </div>
+                                <div class="footer-contact-content">
+                                    <p>123 Beauty Street, NY 10001</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            // Intentionally no "active section" highlighting for SPA navigation.
+                <div class="col-lg-12">
+                    <div class="footer-copyright-text">
+                        <p>&copy; 2026 CRILOF. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Main Footer End -->
 
-            document.getElementById('year').textContent = String(new Date().getFullYear());
-
-            const notifyForm = document.getElementById('notifyForm');
-            if (notifyForm) {
-                notifyForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    const emailInput = document.getElementById('notifyEmail');
-                    const email = (emailInput && emailInput.value ? emailInput.value : '').trim();
-                    if (email && email.includes('@')) {
-                        alert('Thank you for your interest! We will notify you about CRILOF updates.');
-                        emailInput.value = '';
-                    } else {
-                        alert('Please enter a valid email address.');
-                    }
-                });
-            }
-
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    alert('Thanks! Your message has been received.');
-                    contactForm.reset();
-                });
-            }
-
-            const backToTop = document.querySelector('.back-to-top');
-            function updateBackToTop() {
-                if (!backToTop) return;
-                const shouldShow = window.scrollY > 500;
-                backToTop.classList.toggle('show', shouldShow);
-            }
-
-            if (backToTop) {
-                window.addEventListener('scroll', updateBackToTop, { passive: true });
-                updateBackToTop();
-
-                backToTop.addEventListener('click', function () {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-
-            function initCarousel(carouselId, intervalMs) {
-                const carousel = document.getElementById(carouselId);
-                if (!carousel) return;
-                const track = carousel.querySelector('.carousel-track');
-                if (!track) return;
-
-                const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
-                const dots = Array.from(carousel.querySelectorAll('.dot'));
-                const prevBtn = carousel.querySelector('[data-action="prev"]');
-                const nextBtn = carousel.querySelector('[data-action="next"]');
-                let index = 0;
-                let timer = null;
-                let startX = 0;
-                let currentX = 0;
-                let dragging = false;
-
-                function clamp(n, min, max) {
-                    return Math.max(min, Math.min(max, n));
-                }
-
-                function setDot(i) {
-                    dots.forEach((d, di) => d.classList.toggle('active', di === i));
-                }
-
-                function setActiveSlide(i) {
-                    slides.forEach((s, si) => s.classList.toggle('is-active', si === i));
-                }
-
-                function goTo(i) {
-                    index = clamp(i, 0, slides.length - 1);
-                    track.style.transform = `translateX(${-index * 100}%)`;
-                    if (dots.length) setDot(index);
-                    setActiveSlide(index);
-                }
-
-                function next() {
-                    goTo((index + 1) % slides.length);
-                }
-
-                function prev() {
-                    goTo((index - 1 + slides.length) % slides.length);
-                }
-
-                function startAuto() {
-                    stopAuto();
-                    if (slides.length <= 1) return;
-                    timer = window.setInterval(next, intervalMs);
-                }
-
-                function stopAuto() {
-                    if (timer) {
-                        window.clearInterval(timer);
-                        timer = null;
-                    }
-                }
-
-                if (nextBtn) nextBtn.addEventListener('click', function () { stopAuto(); next(); startAuto(); });
-                if (prevBtn) prevBtn.addEventListener('click', function () { stopAuto(); prev(); startAuto(); });
-
-                dots.forEach((d) => {
-                    d.addEventListener('click', function () {
-                        const i = Number(d.getAttribute('data-index'));
-                        stopAuto();
-                        goTo(i);
-                        startAuto();
-                    });
-                });
-
-                carousel.addEventListener('mouseenter', stopAuto);
-                carousel.addEventListener('mouseleave', startAuto);
-                carousel.addEventListener('focusin', stopAuto);
-                carousel.addEventListener('focusout', startAuto);
-
-                function onPointerDown(e) {
-                    dragging = true;
-                    startX = e.clientX;
-                    currentX = startX;
-                    stopAuto();
-                    track.style.transition = 'none';
-                    track.setPointerCapture(e.pointerId);
-                }
-
-                function onPointerMove(e) {
-                    if (!dragging) return;
-                    currentX = e.clientX;
-                    const delta = currentX - startX;
-                    track.style.transform = `translateX(calc(${-index * 100}% + ${delta}px))`;
-                }
-
-                function onPointerUp(e) {
-                    if (!dragging) return;
-                    dragging = false;
-                    const delta = currentX - startX;
-                    track.style.transition = '';
-                    const threshold = 60;
-                    if (delta > threshold) {
-                        prev();
-                    } else if (delta < -threshold) {
-                        next();
-                    } else {
-                        goTo(index);
-                    }
-                    startAuto();
-                    try {
-                        track.releasePointerCapture(e.pointerId);
-                    } catch (_) {
-                    }
-                }
-
-                track.addEventListener('pointerdown', onPointerDown);
-                track.addEventListener('pointermove', onPointerMove);
-                track.addEventListener('pointerup', onPointerUp);
-                track.addEventListener('pointercancel', onPointerUp);
-
-                goTo(0);
-                startAuto();
-            }
-
-            initCarousel('heroCarousel', 7000);
-            initCarousel('productCarousel', 7000);
-
-            const sections = Array.from(document.querySelectorAll('.section'));
-            if ('IntersectionObserver' in window && sections.length) {
-                const io = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('in-view');
-                                io.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
-                );
-
-                sections.forEach((s) => io.observe(s));
-            } else {
-                sections.forEach((s) => s.classList.add('in-view'));
-            }
-        })();
-    </script>
+    <!-- Jquery Library File -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Js File -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Slick Nav Js -->
+    <script src="js/jquery.slicknav.js"></script>
+    <!-- Counter Up Js -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Waypoints Js -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- WOW JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Swiper Bundle Js -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Magnific Popup Js -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Parallaxie Js -->
+    <script src="js/parallaxie.js"></script>
+    <!-- GSAP Js -->
+    <script src="js/gsap.min.js"></script>
+    <!-- Scroll Trigger Js -->
+    <script src="js/ScrollTrigger.min.js"></script>
+    <!-- Split Text Js -->
+    <script src="js/SplitText.js"></script>
+    <!-- Magic Cursor Js -->
+    <script src="js/magiccursor.js"></script>
+    <!-- Custom Js -->
+    <script src="js/function.js"></script>
 </body>
+
 </html>
