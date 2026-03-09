@@ -41,6 +41,15 @@
 		});
 	}
 
+	/* Back to Top Button Show/Hide */
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 100) {
+			$('#back-to-top').fadeIn();
+		} else {
+			$('#back-to-top').fadeOut();
+		}
+	});
+
 	/* Hero Slider Layout JS */
 	const hero_slider_layout = new Swiper('.hero-slider-layout .swiper', {
 		effect: 'fade',
