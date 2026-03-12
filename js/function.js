@@ -272,7 +272,7 @@
 	function formSuccess(){
 		if ($contactform && $contactform.length) {
 			$contactform[0].reset();
-			submitMSG(true, "Message Sent Successfully!")
+			submitMSG(true, "Your Message is Recived to our suppot team they will response you back soon")
 		}
 	}
 
@@ -308,6 +308,55 @@
 	const hoursElement = document.getElementById("hours");
 	const minutesElement = document.getElementById("minutes");
 	const secondsElement = document.getElementById("seconds");
+
+	/* Cookie Consent */
+	(function initCookieConsent(){
+		var consentEl = document.getElementById('cookie-consent');
+		if (!consentEl) {
+			return;
+		}
+
+		var STORAGE_KEY = 'cookie_consent';
+		var existing = null;
+		try {
+			existing = window.localStorage.getItem(STORAGE_KEY);
+		} catch (e) {
+			existing = null;
+		}
+
+		if (existing === 'accepted' || existing === 'declined') {
+			consentEl.hidden = true;
+			$body.removeClass('cookie-consent-open');
+			return;
+		}
+
+		consentEl.hidden = false;
+		$body.addClass('cookie-consent-open');
+
+		var acceptBtn = document.getElementById('cookie-consent-accept');
+		var declineBtn = document.getElementById('cookie-consent-decline');
+
+		function saveChoice(value){
+			try {
+				window.localStorage.setItem(STORAGE_KEY, value);
+			} catch (e) {
+				// ignore
+			}
+			consentEl.hidden = true;
+			$body.removeClass('cookie-consent-open');
+		}
+
+		if (acceptBtn) {
+			acceptBtn.addEventListener('click', function(){
+				saveChoice('accepted');
+			});
+		}
+		if (declineBtn) {
+			declineBtn.addEventListener('click', function(){
+				saveChoice('declined');
+			});
+		}
+	})();
 	
 	if (daysElement && hoursElement && minutesElement && secondsElement) {
 		// Set the date we're counting down to (2 days from now)
