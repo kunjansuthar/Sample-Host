@@ -66,6 +66,20 @@
 		},
 	});
 
+	/* About Images Slider JS */
+	if ($('.about-images .swiper').length) {
+		const about_images_slider = new Swiper('.about-images .swiper', {
+			slidesPerView: 1,
+			speed: 800,
+			spaceBetween: 0,
+			loop: true,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+		});
+	}
+
 	/* testimonial Slider JS */
 	if ($('.testimonial-slider').length) {
 		const testimonial_slider = new Swiper('.testimonial-slider .swiper', {

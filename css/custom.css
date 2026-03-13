@@ -805,6 +805,9 @@ header.main-header .header-sticky{
 .hero.dark-section .section-title h1,
 .hero.dark-section .section-title h2,
 .hero.dark-section .section-title h3,
+.hero.dark-section .section-title h4,
+.hero.dark-section .section-title h5,
+.hero.dark-section .section-title h6,
 .hero.dark-section .section-title-content p,
 .hero.dark-section .section-title p{
 	color: #0b6f8a;
@@ -1020,6 +1023,7 @@ header.main-header .header-sticky{
 
 .hero-image figure{
 	display: block;
+	overflow: hidden;
 }
 
 .hero-image{
@@ -1034,7 +1038,13 @@ header.main-header .header-sticky{
 	max-height: 520px;
 	object-fit: contain;
 	object-position: center;
+	transition: transform 0.35s ease;
+	transform: scale(1);
 }
+
+ .hero-image:hover img{
+	transform: scale(1.08);
+ }
 
 /************************************/
 /***   05. Scrolling Ticker css   ***/
@@ -1124,6 +1134,10 @@ header.main-header .header-sticky{
 	aspect-ratio: 1 / 1.032;
 	object-fit: cover;
 }
+
+ .about-images .about-slide-top img{
+	object-position: top;
+ }
 
 .about-body-item{
 	display: flex;
