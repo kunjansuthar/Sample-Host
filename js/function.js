@@ -309,7 +309,7 @@
 	const minutesElement = document.getElementById("minutes");
 	const secondsElement = document.getElementById("seconds");
 
-	/* Cookie Consent */
+	/* Cookie Consent (disabled)
 	(function initCookieConsent(){
 		var consentEl = document.getElementById('cookie-consent');
 		if (!consentEl) {
@@ -357,6 +357,7 @@
 			});
 		}
 	})();
+	*/
 	
 	if (daysElement && hoursElement && minutesElement && secondsElement) {
 		// Set the date we're counting down to (2 days from now)
