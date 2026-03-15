@@ -42,11 +42,11 @@
 	}
 
 	/* Back to Top Button Show/Hide */
-	$(window).scroll(function() {
+	$(window).on('scroll touchmove', function() {
 		if ($(this).scrollTop() > 100) {
-			$('#back-to-top').fadeIn();
+			$('#back-to-top').addClass('is-visible');
 		} else {
-			$('#back-to-top').fadeOut();
+			$('#back-to-top').removeClass('is-visible');
 		}
 	});
 
@@ -286,7 +286,7 @@
 	function formSuccess(){
 		if ($contactform && $contactform.length) {
 			$contactform[0].reset();
-			submitMSG(true, "Your Message is Recived to our suppot team they will response you back soon")
+			submitMSG(true, "Your message has been received by our support team. They will respond soon.")
 		}
 	}
 

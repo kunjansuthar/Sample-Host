@@ -1,0 +1,138 @@
+/* frank-ruhl-libre-300 - latin */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/frank-ruhl-libre-v23-latin-300.ttf') format('truetype');
+}
+/* frank-ruhl-libre-regular - latin */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/frank-ruhl-libre-v23-latin-regular.ttf') format('truetype');
+}
+/* frank-ruhl-libre-500 - latin */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/frank-ruhl-libre-v23-latin-500.ttf') format('truetype');
+}
+/* frank-ruhl-libre-600 - latin */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/frank-ruhl-libre-v23-latin-600.ttf') format('truetype');
+}
+/* frank-ruhl-libre-700 - latin */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/frank-ruhl-libre-v23-latin-700.ttf') format('truetype');
+}
+/* frank-ruhl-libre-800 - latin */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/frank-ruhl-libre-v23-latin-800.ttf') format('truetype');
+}
+/* frank-ruhl-libre-900 - latin */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/frank-ruhl-libre-v23-latin-900.ttf') format('truetype');
+}
+
+/* montserrat-100 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-100.ttf') format('truetype');
+}
+/* montserrat-200 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-200.ttf') format('truetype');
+}
+/* montserrat-300 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-300.ttf') format('truetype');
+}
+/* montserrat-regular - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-regular.ttf') format('truetype');
+}
+/* montserrat-500 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-500.ttf') format('truetype');
+}
+/* montserrat-600 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-600.ttf') format('truetype');
+}
+/* montserrat-700 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-700.ttf') format('truetype');
+}
+/* montserrat-800 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-800.ttf') format('truetype');
+}
+/* montserrat-900 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-900.ttf') format('truetype');
+}
+
+/* montserrat-italic - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin-italic.ttf') format('truetype');
+}
