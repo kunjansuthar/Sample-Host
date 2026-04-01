@@ -259,6 +259,54 @@
 	var $contactform = $("#contactForm");
 	if ($contactform.length) {
 		$contactform.on("submit", function (event) {
+			var action = ($contactform.attr("action") || "").toLowerCase();
+			if (action.indexOf("https://api.web3forms.com/submit") === 0) {
+				event.preventDefault();
+				var formEl = $contactform[0];
+				var formData = new FormData(formEl);
+				fetch($contactform.attr("action"), {
+					method: "POST",
+					body: formData,
+					headers: {
+						Accept: "application/json",
+					},
+				})
+					.then(function (res) {
+						return res.json().then(function (data) {
+							return { ok: res.ok, data: data };
+						});
+					})
+					.then(function (result) {
+						if (result && result.ok) {
+							if (typeof Swal !== "undefined" && Swal && Swal.fire) {
+								Swal.fire({
+									icon: "success",
+									title: "Your Message submitted successfully!",
+									html: "Thank you for reaching out to us.<br>We'll review your submission and get back to you soon.",
+								});
+							}
+							formSuccess();
+						} else {
+							if (typeof Swal !== "undefined" && Swal && Swal.fire) {
+								Swal.fire({
+									icon: "error",
+									title: "Something went wrong",
+									text: "Please try again in a moment.",
+								});
+							}
+						}
+					})
+					.catch(function () {
+						if (typeof Swal !== "undefined" && Swal && Swal.fire) {
+							Swal.fire({
+								icon: "error",
+								title: "Network error",
+								text: "Please check your internet connection and try again.",
+							});
+						}
+					});
+				return;
+			}
 			event.preventDefault();
 			// Simple form submission without validation
 			submitForm();
