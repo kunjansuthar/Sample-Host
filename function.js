@@ -255,6 +255,99 @@
 		}
 	}
 
+	/* Hero Image Magnifier */
+	(function initHeroMagnifier(){
+		var $heroImg = $('.hero-image img');
+		if (!$heroImg.length) {
+			return;
+		}
+
+		var img = $heroImg[0];
+		var $container = $heroImg.closest('.hero-image');
+		if (!$container.length) {
+			return;
+		}
+
+		var lens = document.createElement('div');
+		lens.className = 'img-magnifier-lens';
+		$container[0].appendChild(lens);
+
+		var zoom = 3.5;
+		var lensSize = 192;
+		var half =lensSize / 2;
+		var lastRect = null;
+
+		function updateBackground(){
+			lens.style.backgroundImage = "url('" + img.src + "')";
+			lens.style.backgroundSize = (img.width * zoom) + 'px ' + (img.height * zoom) + 'px';
+		}
+
+		function getPos(evt){
+			var e = evt;
+			if (e.touches && e.touches.length) {
+				e = e.touches[0];
+			}
+			return { x: e.clientX, y: e.clientY };
+		}
+
+		function moveLens(evt){
+			if (!lastRect) {
+				lastRect = img.getBoundingClientRect();
+			}
+			var p = getPos(evt);
+			var x = p.x - lastRect.left;
+			var y = p.y - lastRect.top;
+
+			if (x < 0 || y < 0 || x > lastRect.width || y > lastRect.height) {
+				lens.style.display = 'none';
+				return;
+			}
+
+			var left = x - half;
+			var top = y - half;
+			if (left < 0) left = 0;
+			if (top < 0) top = 0;
+			if (left > lastRect.width - lensSize) left = lastRect.width - lensSize;
+			if (top > lastRect.height - lensSize) top = lastRect.height - lensSize;
+
+			lens.style.left = left + 'px';
+			lens.style.top = top + 'px';
+
+			var bgX = -((left + half) * zoom - half);
+			var bgY = -((top + half) * zoom - half);
+			lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+			lens.style.display = 'block';
+		}
+
+		function handleEnter(){
+			lastRect = img.getBoundingClientRect();
+			updateBackground();
+			lens.style.display = 'block';
+		}
+
+		function handleLeave(){
+			lens.style.display = 'none';
+		}
+
+		if (img.complete) {
+			updateBackground();
+		} else {
+			img.addEventListener('load', updateBackground);
+		}
+
+		$container.on('mousemove', moveLens);
+		$container.on('mouseenter', handleEnter);
+		$container.on('mouseleave', handleLeave);
+		$container.on('touchstart', handleEnter);
+		$container.on('touchmove', moveLens);
+		$container.on('touchend touchcancel', handleLeave);
+
+		$window.on('resize', function(){
+			lastRect = img.getBoundingClientRect();
+			updateBackground();
+		});
+	})();
+
 	/* Contact form validation - simplified */
 	var $contactform = $("#contactForm");
 	if ($contactform.length) {
