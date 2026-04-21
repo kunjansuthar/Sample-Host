@@ -109,6 +109,57 @@
 		});
 	}
 
+	/* Reviews Slider JS */
+	if ($('.reviews-slider .swiper').length) {
+		const reviews_slider = new Swiper('.reviews-slider .swiper', {
+			speed: 800,
+			loop: true,
+			centeredSlides: true,
+			slideToClickedSlide: true,
+			watchSlidesProgress: true,
+			observer: true,
+			observeParents: true,
+			spaceBetween: 24,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+				pauseOnMouseEnter: true,
+			},
+			pagination: {
+				el: '.reviews-slider .swiper-pagination',
+				clickable: true,
+			},
+			breakpoints: {
+				0: {
+					slidesPerView: 1,
+					centeredSlides: false,
+				},
+				768: {
+					slidesPerView: 1,
+					centeredSlides: false,
+				},
+				992: {
+					slidesPerView: 3,
+					centeredSlides: true,
+				},
+			},
+		});
+
+		if (reviews_slider.autoplay && typeof reviews_slider.autoplay.start === 'function') {
+			reviews_slider.autoplay.start();
+		}
+
+		reviews_slider.on('click', function(swiper){
+			if (!swiper || typeof swiper.clickedIndex !== 'number') {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				return;
+			}
+			swiper.slideToLoop(swiper.clickedIndex);
+		});
+	}
+
 	/* Company Support Slider JS */
 	if ($('.company-supports-slider').length) {
 		const agency_supports_slider = new Swiper('.company-supports-slider .swiper', {
@@ -255,56 +306,105 @@
 		}
 	}
 
+	/* Hero Image Magnifier */
+	(function initHeroMagnifier(){
+		var $heroImg = $('.hero-image img');
+		if (!$heroImg.length) {
+			return;
+		}
+
+		var img = $heroImg[0];
+		var $container = $heroImg.closest('.hero-image');
+		if (!$container.length) {
+			return;
+		}
+
+		var lens = document.createElement('div');
+		lens.className = 'img-magnifier-lens';
+		$container[0].appendChild(lens);
+
+		var zoom = 3.5;
+		var lensSize = 192;
+		var half =lensSize / 2;
+		var lastRect = null;
+
+		function updateBackground(){
+			lens.style.backgroundImage = "url('" + img.src + "')";
+			lens.style.backgroundSize = (img.width * zoom) + 'px ' + (img.height * zoom) + 'px';
+		}
+
+		function getPos(evt){
+			var e = evt;
+			if (e.touches && e.touches.length) {
+				e = e.touches[0];
+			}
+			return { x: e.clientX, y: e.clientY };
+		}
+
+		function moveLens(evt){
+			if (!lastRect) {
+				lastRect = img.getBoundingClientRect();
+			}
+			var p = getPos(evt);
+			var x = p.x - lastRect.left;
+			var y = p.y - lastRect.top;
+
+			if (x < 0 || y < 0 || x > lastRect.width || y > lastRect.height) {
+				lens.style.display = 'none';
+				return;
+			}
+
+			var left = x - half;
+			var top = y - half;
+			if (left < 0) left = 0;
+			if (top < 0) top = 0;
+			if (left > lastRect.width - lensSize) left = lastRect.width - lensSize;
+			if (top > lastRect.height - lensSize) top = lastRect.height - lensSize;
+
+			lens.style.left = left + 'px';
+			lens.style.top = top + 'px';
+
+			var bgX = -((left + half) * zoom - half);
+			var bgY = -((top + half) * zoom - half);
+			lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+			lens.style.display = 'block';
+		}
+
+		function handleEnter(){
+			lastRect = img.getBoundingClientRect();
+			updateBackground();
+			lens.style.display = 'block';
+		}
+
+		function handleLeave(){
+			lens.style.display = 'none';
+		}
+
+		if (img.complete) {
+			updateBackground();
+		} else {
+			img.addEventListener('load', updateBackground);
+		}
+
+		$container.on('mousemove', moveLens);
+		$container.on('mouseenter', handleEnter);
+		$container.on('mouseleave', handleLeave);
+		$container.on('touchstart', handleEnter);
+		$container.on('touchmove', moveLens);
+		$container.on('touchend touchcancel', handleLeave);
+
+		$window.on('resize', function(){
+			lastRect = img.getBoundingClientRect();
+			updateBackground();
+		});
+	})();
+
 	/* Contact form validation - simplified */
 	var $contactform = $("#contactForm");
 	if ($contactform.length) {
 		$contactform.on("submit", function (event) {
 			var action = ($contactform.attr("action") || "").toLowerCase();
 			if (action.indexOf("https://api.web3forms.com/submit") === 0) {
-				event.preventDefault();
-				var formEl = $contactform[0];
-				var formData = new FormData(formEl);
-				fetch($contactform.attr("action"), {
-					method: "POST",
-					body: formData,
-					headers: {
-						Accept: "application/json",
-					},
-				})
-					.then(function (res) {
-						return res.json().then(function (data) {
-							return { ok: res.ok, data: data };
-						});
-					})
-					.then(function (result) {
-						if (result && result.ok) {
-							if (typeof Swal !== "undefined" && Swal && Swal.fire) {
-								Swal.fire({
-									icon: "success",
-									title: "Your Message submitted successfully!",
-									html: "Thank you for reaching out to us.<br>We'll review your submission and get back to you soon.",
-								});
-							}
-							formSuccess();
-						} else {
-							if (typeof Swal !== "undefined" && Swal && Swal.fire) {
-								Swal.fire({
-									icon: "error",
-									title: "Something went wrong",
-									text: "Please try again in a moment.",
-								});
-							}
-						}
-					})
-					.catch(function () {
-						if (typeof Swal !== "undefined" && Swal && Swal.fire) {
-							Swal.fire({
-								icon: "error",
-								title: "Network error",
-								text: "Please check your internet connection and try again.",
-							});
-						}
-					});
 				return;
 			}
 			event.preventDefault();
