@@ -1,0 +1,154 @@
+/* Header / footer brand — matches Index5 (brand-font + favicon) */
+.brand-font,
+.navbar-brand-text {
+	font-family: "Frank Ruhl Libre", "Urbanist", Georgia, serif;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 1;
+	color: var(--bs-body-emphasis-color);
+	display: inline-block;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.navbar-brand .brand-font,
+.navbar-brand .navbar-brand-text {
+	font-size: 28px;
+	letter-spacing: 0.06em;
+	text-decoration: none;
+}
+
+.footer-brand-text {
+	font-size: 26px;
+	letter-spacing: 0.06em;
+}
+
+.navbar-brand:hover .brand-font,
+.navbar-brand:focus .brand-font,
+.navbar-brand:hover .navbar-brand-text,
+.navbar-brand:focus .navbar-brand-text {
+	color: var(--bs-body-emphasis-color);
+}
+
+.navbar-brand-img {
+	height: 40px;
+	width: auto;
+	max-width: 120px;
+	object-fit: contain;
+}
+
+/* Home page — CRILOF content sections (layout from Index5, theme from Glowing) */
+.home-benefits-box,
+.home-review-box,
+.home-faq-box {
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-benefits-box:hover,
+.home-review-box:hover,
+.home-faq-box:hover {
+	border-color: var(--bs-primary) !important;
+	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
+}
+
+.home-check-list li {
+	position: relative;
+	padding-left: 1.25rem;
+	line-height: 1.5;
+}
+
+.home-check-list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.55em;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--bs-primary);
+}
+
+.compare-table th,
+.compare-table td {
+	font-size: 0.9375rem;
+	vertical-align: top;
+}
+
+.legal-modal-body h6 {
+	font-size: 1rem;
+}
+
+.legal-modal-body ol {
+	padding-left: 1.25rem;
+}
+
+.legal-modal-body li {
+	margin-bottom: 0.5rem;
+}
+
+.about-feature-icon {
+	width: 56px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.about-feature-icon img {
+	max-width: 40px;
+	max-height: 40px;
+}
+
+#aboutGallery .carousel-indicators {
+	margin-bottom: 1rem;
+}
+
+/* Home hero — Index5 copy, theme layout */
+.hero-home-bg-image {
+	background-color: var(--bs-body-tertiary-bg, var(--bs-tertiary-bg));
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.hero-home-bg-placeholder {
+	background-color: var(--bs-body-tertiary-bg, var(--bs-tertiary-bg));
+}
+
+.hero-home-bg-placeholder--alt {
+	background-color: var(--bs-secondary-bg);
+}
+
+.hero-home-bg-placeholder--alt2 {
+	background-color: var(--bs-body-bg);
+}
+
+.hero-home-content {
+	max-width: 720px;
+}
+
+.hero-home-lead {
+	line-height: 1.55;
+	color: #000;
+}
+
+.hero-keyword-highlight {
+	font-weight: 700;
+	color: var(--bs-primary);
+	background: rgba(var(--bs-primary-rgb), 0.12);
+	padding: 0 6px;
+	display: inline;
+}
+
+.hero-keyword-highlight__word {
+	text-decoration: underline;
+}
+
+.footer-social-links a {
+	transition: color 0.3s ease;
+}
+
+.footer-social-links a:hover,
+.footer-social-links a:focus {
+	color: var(--bs-primary) !important;
+}
