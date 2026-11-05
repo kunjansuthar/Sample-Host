@@ -1,0 +1,798 @@
+/* ==========================================================================
+   CRILOF Luxury Brand E-Commerce Theme (Static Site Edition)
+   Derived from Crilof Dynamic E-Commerce UI & Styling
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Frank+Ruhl+Libre:wght@400;500;600;700&display=swap');
+
+:root,
+[data-bs-theme="light"] {
+  --crilof-primary: #b08968;
+  --crilof-primary-hover: #936e4f;
+  --crilof-primary-rgb: 176, 137, 104;
+  --crilof-dark: #161616;
+  --crilof-darker: #101010;
+  --crilof-bg-light: #f8f9fa;
+  --crilof-border: #e9ecef;
+
+  /* Bootstrap Variable Overrides */
+  --bs-primary: #b08968;
+  --bs-primary-rgb: 176, 137, 104;
+  --bs-primary-text-emphasis: #7c5a3d;
+  --bs-primary-bg-subtle: #f6efe9;
+  --bs-primary-border-subtle: #dfcebf;
+  --bs-link-color: #b08968;
+  --bs-link-hover-color: #936e4f;
+  --bs-font-sans-serif: 'Urbanist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --bs-body-font-family: var(--bs-font-sans-serif);
+}
+
+/* --------------------------------------------------------------------------
+   Dark Mode Palette (Matching New E-Commerce Theme 1:1)
+   -------------------------------------------------------------------------- */
+[data-bs-theme="dark"] {
+  --crilof-primary: #b08968;
+  --crilof-primary-hover: #dfba73;
+  --crilof-primary-rgb: 176, 137, 104;
+
+  --bs-primary: #b08968;
+  --bs-primary-rgb: 176, 137, 104;
+  --bs-body-color: #ababab;
+  --bs-body-color-rgb: 171, 171, 171;
+  --bs-body-bg: #1F261D;
+  --bs-body-bg-rgb: 31, 38, 29;
+  --bs-emphasis-color: #ffffff;
+  --bs-emphasis-color-rgb: 255, 255, 255;
+  --bs-secondary-color: rgba(171, 171, 171, 0.75);
+  --bs-secondary-bg: #242c22;
+  --bs-secondary-bg-rgb: 36, 44, 34;
+  --bs-tertiary-color: rgba(171, 171, 171, 0.5);
+  --bs-tertiary-bg: #2A3428;
+  --bs-tertiary-bg-rgb: 42, 52, 40;
+  --bs-heading-color: #ffffff;
+  --bs-link-color: #dfba73;
+  --bs-link-hover-color: #b08968;
+  --bs-border-color: #364233;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.12);
+}
+
+[data-bs-theme="dark"] body {
+  background-color: #1F261D !important;
+  color: #ababab !important;
+}
+
+[data-bs-theme="dark"] h1,
+[data-bs-theme="dark"] h2,
+[data-bs-theme="dark"] h3,
+[data-bs-theme="dark"] h4,
+[data-bs-theme="dark"] h5,
+[data-bs-theme="dark"] h6,
+[data-bs-theme="dark"] .h1,
+[data-bs-theme="dark"] .h2,
+[data-bs-theme="dark"] .h3,
+[data-bs-theme="dark"] .h4,
+[data-bs-theme="dark"] .display-4,
+[data-bs-theme="dark"] .display-6 {
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+body {
+  font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #2b2b2b;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1b1b1b;
+}
+
+.brand-font,
+.navbar-brand-text {
+  font-family: 'Frank Ruhl Libre', 'Urbanist', Georgia, serif !important;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--bs-heading-color, #1b1b1b) !important;
+  text-decoration: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Brand Buttons & Accents (Matching E-Commerce 1:1)
+   -------------------------------------------------------------------------- */
+.btn-crilof,
+.btn-primary {
+  background-color: #b08968 !important;
+  border-color: #b08968 !important;
+  color: #ffffff !important;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+.btn-crilof:hover,
+.btn-crilof:focus,
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #936e4f !important;
+  border-color: #936e4f !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(176, 137, 104, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-crilof-outline {
+  background-color: transparent !important;
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+.btn-crilof-outline:hover,
+.btn-crilof-outline:focus {
+  background-color: #ffffff !important;
+  color: #1b1b1b !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-outline-crilof {
+  color: #b08968 !important;
+  border: 2px solid #b08968 !important;
+  background: transparent !important;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+.btn-outline-crilof:hover,
+.btn-outline-crilof:focus {
+  background-color: #b08968 !important;
+  color: #ffffff !important;
+  border-color: #b08968 !important;
+  box-shadow: 0 4px 14px rgba(176, 137, 104, 0.35);
+}
+
+.text-crilof,
+.text-primary {
+  color: #b08968 !important;
+}
+
+.bg-crilof,
+.bg-primary {
+  background-color: #b08968 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Header & Navbar (Modern E-Commerce Design)
+   -------------------------------------------------------------------------- */
+.site-header {
+  background: var(--bs-body-bg, #ffffff) !important;
+  border-bottom: 1px solid var(--bs-border-color, #e9ecef) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-bs-theme="dark"] .site-header {
+  background-color: #1a2018 !important;
+  border-bottom-color: #2f3a2d !important;
+}
+
+.navbar-nav .nav-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bs-body-color, #2b2b2b);
+  padding: 0.5rem 1rem !important;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #b08968 !important;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background-color: #b08968;
+  border-radius: 2px;
+}
+
+/* Theme Toggle Button & Dropdown */
+.color-modes .dropdown-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-body-color, #2b2b2b) !important;
+  background: transparent;
+  border: 1px solid var(--bs-border-color, #e9ecef);
+  transition: all 0.2s ease;
+}
+
+.color-modes .dropdown-toggle:hover {
+  border-color: #b08968;
+  color: #b08968 !important;
+}
+
+.color-modes .dropdown-toggle::after {
+  display: none !important;
+}
+
+.color-modes .dropdown-menu {
+  min-width: 9rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 0.35rem;
+  border: 1px solid var(--bs-border-color, #e9ecef);
+}
+
+.color-modes .dropdown-item {
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.45rem 0.75rem;
+}
+
+.color-modes .dropdown-item.active {
+  background-color: #b08968 !important;
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Navigation Drawer (Clean, Modern Offcanvas)
+   -------------------------------------------------------------------------- */
+.mobile-nav-drawer {
+  width: 320px;
+  max-width: 85vw;
+}
+
+.mobile-nav-drawer .offcanvas-header {
+  border-bottom: 1px solid var(--bs-border-color, #e9ecef);
+  padding: 1.25rem 1.25rem;
+}
+
+[data-bs-theme="dark"] .mobile-nav-drawer {
+  background-color: #1a2018 !important;
+  color: #f1f1f1 !important;
+}
+
+[data-bs-theme="dark"] .mobile-nav-drawer .offcanvas-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-welcome-card {
+  background: rgba(176, 137, 104, 0.08);
+  border: 1px solid rgba(176, 137, 104, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+[data-bs-theme="dark"] .mobile-nav-welcome-card {
+  background: rgba(176, 137, 104, 0.16);
+  border-color: rgba(176, 137, 104, 0.35);
+}
+
+.mobile-nav-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bs-secondary-color, #888888);
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: 0.3rem;
+  border-radius: 8px;
+  color: var(--bs-body-color, #2b2b2b);
+  text-decoration: none !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-link i {
+  width: 22px;
+  text-align: center;
+  margin-right: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--bs-secondary-color, #777);
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  background: rgba(176, 137, 104, 0.12);
+  color: #b08968 !important;
+  font-weight: 600;
+}
+
+.mobile-nav-link:hover i,
+.mobile-nav-link.active i {
+  color: #b08968 !important;
+}
+
+[data-bs-theme="dark"] .mobile-nav-link {
+  color: #e2e2e2;
+}
+
+[data-bs-theme="dark"] .mobile-nav-link:hover,
+[data-bs-theme="dark"] .mobile-nav-link.active {
+  background: rgba(176, 137, 104, 0.22);
+  color: #dfba73 !important;
+}
+
+.mobile-nav-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--bs-border-color, #e9ecef);
+  background: var(--bs-tertiary-bg, #fbfbfb);
+}
+
+[data-bs-theme="dark"] .mobile-nav-footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  background: #171c15 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Floating Back-To-Top Button (Pure Luxury Design)
+   -------------------------------------------------------------------------- */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #b08968;
+  border: 1.5px solid #d8cebe;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1035;
+  font-size: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.9);
+  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  outline: none;
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top-btn:hover {
+  background: linear-gradient(135deg, #dfba73 0%, #b08968 100%);
+  color: #16120e;
+  border-color: #dfba73;
+  box-shadow: 0 8px 24px rgba(176, 137, 104, 0.45);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.back-to-top-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+[data-bs-theme="dark"] .back-to-top-btn {
+  background: #181410;
+  color: #dfba73;
+  border-color: #3d2f21;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(223, 186, 115, 0.15);
+}
+
+[data-bs-theme="dark"] .back-to-top-btn:hover {
+  background: linear-gradient(135deg, #dfba73 0%, #b08968 100%);
+  color: #16120e;
+  border-color: #dfba73;
+}
+
+/* --------------------------------------------------------------------------
+   Luxury Footer Layout (Matching E-Commerce 1:1)
+   -------------------------------------------------------------------------- */
+footer.site-footer {
+  background: #141414 !important;
+  color: #ffffff !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-bs-theme="dark"] footer.site-footer {
+  background: #10140e !important;
+  border-top: 1px solid #283225;
+}
+
+footer.site-footer a {
+  color: #ababab;
+  transition: color 0.2s ease;
+  text-decoration: none !important;
+}
+
+footer.site-footer a:hover {
+  color: #b08968 !important;
+}
+
+footer.site-footer .social-icons a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+
+footer.site-footer .social-icons a:hover {
+  background: #b08968;
+  border-color: #b08968;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Contact Page Luxury Cards
+   -------------------------------------------------------------------------- */
+.contact-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid var(--bs-border-color, #e9ecef) !important;
+  border-radius: 14px !important;
+  background-color: var(--bs-body-bg, #ffffff) !important;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: #b08968 !important;
+  box-shadow: 0 12px 30px rgba(176, 137, 104, 0.12) !important;
+}
+
+[data-bs-theme="dark"] .contact-card {
+  background-color: #242c22 !important;
+  border-color: #364233 !important;
+}
+
+.contact-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(176, 137, 104, 0.12);
+  color: #b08968 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon-wrapper i {
+  color: #b08968 !important;
+}
+
+/* --------------------------------------------------------------------------
+   FAQ Smooth Accordions & Search
+   -------------------------------------------------------------------------- */
+.faq-section-row {
+  border-bottom: 1px solid var(--bs-border-color, #eaeaea);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.faq-category-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--bs-heading-color, #1b1b1b);
+}
+
+.faq-item-row {
+  border-bottom: 1px solid var(--bs-border-color, #eaeaea);
+}
+
+.faq-item-row:last-child {
+  border-bottom: none;
+}
+
+.faq-header-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  outline: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bs-body-color, #1b1b1b);
+  transition: color 0.2s ease;
+}
+
+.faq-header-btn:hover,
+.faq-header-btn.active {
+  color: #b08968 !important;
+}
+
+.faq-header-btn .faq-q-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(176, 137, 104, 0.1);
+  color: #b08968;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.faq-header-btn.active .faq-q-icon {
+  background: #b08968;
+  color: #ffffff;
+}
+
+.faq-collapse-body {
+  display: none;
+  padding-bottom: 1.25rem;
+  color: var(--bs-secondary-color, #555555);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.faq-collapse-body.show {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Cards, Benefits & Feature Icons
+   -------------------------------------------------------------------------- */
+.home-benefits-box,
+.card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid var(--bs-border-color, #eaeaea) !important;
+}
+
+.home-benefits-box:hover,
+.card:hover {
+  border-color: #b08968 !important;
+}
+
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] .home-benefits-box {
+  background-color: #242c22 !important;
+  border-color: #364233 !important;
+  color: #e0e0e0;
+}
+
+.about-feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(176, 137, 104, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-feature-icon img,
+.about-feature-icon svg {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+[data-bs-theme="dark"] .about-feature-icon {
+  background: #2a3428 !important;
+  border: 1px solid #364233;
+}
+
+/* Compare Table Styling */
+.compare-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.compare-table th {
+  background-color: #f7f3ef !important;
+  color: #1b1b1b !important;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.compare-table td {
+  padding: 1rem;
+}
+
+[data-bs-theme="dark"] .compare-table th {
+  background-color: #2a3428 !important;
+  color: #ffffff !important;
+  border-color: #364233 !important;
+}
+
+[data-bs-theme="dark"] .compare-table td {
+  background-color: #242c22 !important;
+  color: #ababab !important;
+  border-color: #364233 !important;
+}
+
+/* Form Controls */
+.form-control:focus,
+.form-select:focus {
+  border-color: #b08968 !important;
+  box-shadow: 0 0 0 0.2rem rgba(176, 137, 104, 0.2) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Carousel Section (Matching Crilof E-Commerce Size & Tinted Opacity)
+   -------------------------------------------------------------------------- */
+#homeHeroCarousel.slick-slider {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+  background-color: #161616;
+}
+
+#homeHeroCarousel .hero-home-slide {
+  position: relative;
+  overflow: hidden;
+  display: flex !important;
+  align-items: center;
+  min-height: 72vh !important;
+  min-height: 75dvh !important;
+  height: auto !important;
+  padding: 3rem 0 !important;
+  color: #ffffff !important;
+}
+
+@media (min-width: 992px) {
+  #homeHeroCarousel .hero-home-slide {
+    min-height: 75vh !important;
+    min-height: 78dvh !important;
+    padding: 3.5rem 0 !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #homeHeroCarousel .hero-home-slide {
+    min-height: 55vh !important;
+    min-height: 58dvh !important;
+    padding: 2rem 0 !important;
+  }
+}
+
+#homeHeroCarousel .hero-home-slide .container {
+  position: relative;
+  z-index: 2;
+}
+
+#homeHeroCarousel .hero-home-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+
+#homeHeroCarousel .hero-title {
+  color: #ffffff !important;
+  font-size: clamp(2rem, 5vw + 0.5rem, 3.25rem) !important;
+  line-height: 1.18 !important;
+  font-weight: 700;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+#homeHeroCarousel .hero-home-lead {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: clamp(0.95rem, 1.5vw + 0.4rem, 1.18rem) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+}
+
+/* Hero Background Image & Color Tinted Opacity matching E-Commerce (45% dark tint) */
+#homeHeroCarousel .hero-home-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../images/CustomImage/Hero-1.jpg') center center / cover no-repeat !important;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Our Signature Sunscreen Showcase Product Card
+   -------------------------------------------------------------------------- */
+.product-showcase-box {
+  background-color: #ffffff !important;
+  border: 1px solid var(--bs-border-color, #e9ecef) !important;
+  border-radius: 20px !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  max-width: 440px;
+}
+
+[data-bs-theme="dark"] .product-showcase-box {
+  background-color: #242c22 !important;
+  border-color: #364233 !important;
+}
+
+.product-showcase-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(176, 137, 104, 0.18) !important;
+}
+
+.product-showcase-box img {
+  max-height: 480px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.06));
+}
+
+@media (max-width: 767.98px) {
+  .product-showcase-box {
+    padding: 1rem !important;
+    max-width: 320px;
+  }
+  .product-showcase-box img {
+    max-height: 340px;
+  }
+}
+
